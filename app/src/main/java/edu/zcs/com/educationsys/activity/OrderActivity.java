@@ -18,7 +18,6 @@ import android.view.WindowManager;
 import android.view.animation.AnimationUtils;
 import android.widget.EditText;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
 import android.widget.PopupWindow;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -45,7 +44,7 @@ public class OrderActivity extends AppCompatActivity {
             my_order_address,my_order_info,my_order_cycle,my_order_pay,my_order_time,my_order_area;
     private ImageView my_order_img;
     private Order order;
-    private LinearLayout order_release;
+    private TextView order_release;
     private Account account;
     Handler myHandler=new Handler(){
         @Override
@@ -63,6 +62,10 @@ public class OrderActivity extends AppCompatActivity {
                     my_order_cycle.setText(order.getOcycle());
                     my_order_info.setText(order.getOinfo());
                     my_order_img.setImageResource(CourseUtils.getCourseIcon(order.getOcourse()));
+                    if(order.getOstatic().equals("申请中")){
+                        order_release.setText(order.getOstatic());
+                        order_release.setBackgroundColor(getResources().getColor(R.color.switch_thumb_disabled_material_light));
+                    }
                     break;
                 case 2:
                     if((Boolean) msg.obj) {
@@ -98,11 +101,13 @@ public class OrderActivity extends AppCompatActivity {
         my_order_time=(TextView)findViewById(R.id.my_order_time);
         my_order_area=(TextView)findViewById(R.id.my_order_area);
         my_order_img=(ImageView)findViewById(R.id.my_order_img);
-        order_release= (LinearLayout) findViewById(R.id.order_release);
+        order_release= (TextView) findViewById(R.id.order_release);
         order_release.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                new PopupWindows(OrderActivity.this,order_release);
+                if(!order.getOstatic().equals("申请中")) {
+                    new PopupWindows(OrderActivity.this, order_release);
+                }
             }
         });
         init();

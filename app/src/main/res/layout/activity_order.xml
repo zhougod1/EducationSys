@@ -41,33 +41,23 @@
             android:layout_alignParentStart="true" />
     </RelativeLayout>
 
-    <LinearLayout
-        android:orientation="horizontal"
+    <TextView
+        android:text="马上兼职"
         android:layout_width="match_parent"
         android:layout_height="50dp"
-        android:background="@color/my_background"
-        android:gravity="center_vertical"
-        android:id="@+id/order_release"
+        android:id="@+id/textView6"
+        android:gravity="center"
+        android:textColor="@color/window_background"
+        android:textSize="20dp"
         android:layout_alignParentBottom="true"
-        android:layout_alignParentStart="true">
-
-        <TextView
-            android:text="马上兼职"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/textView6"
-            android:gravity="center"
-            android:textColor="@color/window_background"
-            android:textSize="20dp"
-            />
-    </LinearLayout>
+        android:background="@color/my_background" />
 
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_below="@+id/order_info_title"
         android:layout_alignParentStart="true"
-        android:layout_above="@+id/order_release">
+        android:layout_above="@+id/textView6">
         <include
             layout="@layout/order_context"
             android:layout_width="match_parent"
