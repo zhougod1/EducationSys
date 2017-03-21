@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:background="@color/window_background">
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:background="@color/my_background2"
+            android:layout_height="1sp"
+            android:layout_marginLeft="15dp" />
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="10dp">
+
+            <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1.5"
+                android:paddingBottom="12dp"
+                android:paddingLeft="12dp"
+                android:paddingRight="12dp"
+                android:paddingTop="12dp">
+
+                <TextView
+                    android:text="今天"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/bill_week"
+                    android:layout_weight="1"
+                    android:gravity="center_horizontal"
+                    android:textSize="20sp"
+                    android:textColor="#80737373" />
+
+                <TextView
+                    android:text="03-20"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/bill_date"
+                    android:layout_weight="1"
+                    android:gravity="center_horizontal"
+                    android:textSize="16dp"
+                    android:textColor="#80737373" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:weightSum="1">
+
+                <edu.zcs.com.educationsys.util.view.CircleImageView
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:src="@drawable/test"
+                    app:border_width="2dp"
+                    app:border_color="@color/window_background"
+                    android:id="@+id/bill_head"
+                    android:layout_gravity="center"
+                    android:layout_centerHorizontal="true"
+                    android:layout_weight="1" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="5"
+                android:gravity="center_vertical">
+
+                <LinearLayout
+                    android:orientation="horizontal"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <TextView
+                        android:text="￥60.00"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/bill_pay"
+                        android:layout_marginLeft="15dp"
+                        android:textSize="21sp"
+                        android:textColor="@color/background_material_dark"
+                        android:layout_weight="2" />
+
+                    <TextView
+                        android:text="待处理"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/bill_static"
+                        android:layout_weight="1"
+                        android:gravity="center_horizontal" />
+                </LinearLayout>
+
+                <TextView
+                    android:text="诚聘一高中老师！！！"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/bill_title"
+                    android:layout_marginLeft="15dp"
+                    android:layout_marginTop="6dp" />
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</LinearLayout>

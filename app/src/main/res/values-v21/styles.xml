@@ -1,0 +1,22 @@
+<resources>
+        <style name="AppTheme.NoActionBar">
+            <item name="windowActionBar">false</item>
+            <item name="windowNoTitle">true</item>
+            <item name="android:windowDrawsSystemBarBackgrounds">true</item>
+            <item name="android:statusBarColor">@android:color/transparent</item>
+
+        </style>
+    <!-- ImageryHeader Theme -->
+    <style name="Theme.ImageryHeader" parent="android:Theme.Holo.Light.DarkActionBar">
+        <item name="android:actionBarStyle">@style/Theme.ImageryHeader.ActionBar</item>
+        <item name="android:windowBackground">@color/window_background</item>
+        <item name="android:windowContentOverlay">@null</item>
+        <item name="android:windowActionBarOverlay">true</item>
+    </style>
+
+    <!-- ImageryHeader Theme Action Bar -->
+    <style name="Theme.ImageryHeader.ActionBar" parent="android:Widget.Holo.ActionBar">
+        <item name="android:displayOptions">showHome</item>
+        <item name="android:background">@null</item>
+    </style>
+</resources>

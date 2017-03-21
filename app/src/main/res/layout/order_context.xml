@@ -1,0 +1,264 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/my_background2"
+    >
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:background="@color/window_background"
+        android:gravity="center_vertical"
+        android:paddingLeft="8dp"
+        android:paddingRight="8dp"
+        android:paddingTop="8dp"
+        android:paddingBottom="8dp"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:layout_width="65dp"
+            android:layout_height="62dp"
+            android:src="@drawable/math"
+            android:id="@+id/my_order_img" />
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingTop="5dp"
+            android:paddingLeft="15dp"
+            android:paddingRight="5dp"
+            >
+
+
+            <TextView
+                android:text="聘高中数学老师一名！！！"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="20sp"
+                android:id="@+id/my_order_title"
+                android:textAppearance="@style/TextAppearance.AppCompat" />
+
+            <TextView
+                android:text="厦门"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/my_order_area" />
+
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                >
+
+                <TextView
+                    android:text="2017-01-08"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/my_order_time"
+                    android:gravity="center_vertical"
+                    android:layout_weight="1" />
+
+                <TextView
+                    android:text="60"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/my_order_pay"
+                    android:textSize="20sp"
+                    android:textColor="@color/my_color_red"
+                    android:gravity="center_vertical" />
+
+                <TextView
+                    android:text="/天"
+                    android:layout_width="34dp"
+                    android:layout_height="match_parent"
+                    android:id="@+id/textView18"
+                    android:gravity="center_vertical" />
+            </LinearLayout>
+        </LinearLayout>
+    </LinearLayout>
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:background="@color/window_background"
+        android:paddingTop="8dp"
+        android:paddingBottom="8dp"
+        android:paddingLeft="8dp"
+        android:paddingRight="8dp"
+        >
+
+        <TextView
+            android:text="部分信息"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/textView23"
+            android:textSize="20sp"
+            android:layout_weight="1"
+            android:textAppearance="@style/TextAppearance.AppCompat" />
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:paddingTop="8dp">
+
+            <TextView
+                android:text="类型："
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/textView26"
+                android:layout_weight="4" />
+
+            <TextView
+                android:text="高中数学"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/my_order_typle"
+                android:layout_weight="1"
+                android:textColor="@color/abc_input_method_navigation_guard" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:paddingTop="8dp">
+
+            <TextView
+                android:text="联系人："
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/textView28"
+                android:layout_weight="4" />
+
+            <TextView
+                android:text="陈小姐"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/my_order_name"
+                android:layout_weight="1"
+                android:textColor="@color/abc_input_method_navigation_guard" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:paddingTop="8dp">
+
+            <TextView
+                android:text="电话："
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/textView30"
+                android:layout_weight="4" />
+
+            <TextView
+                android:text="13020134891"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/my_order_phone"
+                android:layout_weight="1"
+                android:textColor="@color/abc_input_method_navigation_guard" />
+        </LinearLayout>
+
+        <TextView
+            android:text="日结"
+            android:layout_width="30dp"
+            android:layout_height="wrap_content"
+            android:background="@color/my_background2"
+            android:textColor="@color/window_background"
+            android:id="@+id/my_order_cycle"
+            android:layout_marginTop="8dp" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:paddingTop="8dp"
+        android:paddingBottom="8dp"
+        android:paddingLeft="8dp"
+        android:paddingRight="8dp"
+        android:background="@color/window_background"
+        >
+
+        <TextView
+            android:text="工作地址"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/textView33"
+            android:textSize="20sp"
+            android:layout_weight="1"
+            android:textAppearance="@style/TextAppearance.AppCompat" />
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:paddingTop="8dp"
+            android:paddingBottom="8dp"
+            android:layout_weight="1">
+
+            <TextView
+                android:text="住址："
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/textView35"
+                android:layout_weight="4"
+                android:gravity="top" />
+
+            <TextView
+                android:text="厦门市思明区富下路我也不知道什么小区5接下来只是测试长度"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/my_order_address"
+                android:layout_weight="1"
+                android:gravity="top"
+                android:textColor="@color/abc_input_method_navigation_guard"
+                android:textSize="16sp" />
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="10dp"
+        android:paddingTop="8dp"
+        android:paddingBottom="8dp"
+        android:paddingLeft="8dp"
+        android:paddingRight="8dp"
+        android:background="@color/window_background"
+        >
+
+        <TextView
+            android:text="具体说明"
+            android:layout_width="366dp"
+            android:layout_height="wrap_content"
+            android:id="@+id/textView36"
+            android:textSize="20sp"
+            android:textAppearance="@style/TextAppearance.AppCompat" />
+
+        <TextView
+            android:text="TextView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/my_order_info" />
+
+    </LinearLayout>
+
+</LinearLayout>

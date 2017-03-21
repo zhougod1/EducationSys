@@ -1,0 +1,281 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical">
+
+    <edu.zcs.com.educationsys.util.view.ObservableScrollView
+        android:id="@+id/scroll_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fillViewport="true"
+    android:layout_marginBottom="50dp"
+        android:overScrollMode="never">
+
+        <FrameLayout
+            android:id="@+id/scroll_view_child"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:clipChildren="false">
+
+            <!-- Header Imagery -->
+            <FrameLayout
+                android:id="@+id/header_image_container"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <ImageView
+                    android:id="@+id/header_image"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:scaleType="centerCrop"
+                    android:background="@color/abc_search_url_text_normal" />
+           </FrameLayout>
+
+            <!-- Body -->
+            <LinearLayout
+                android:id="@+id/body_container"
+                android:layout_width="match_parent"
+                android:layout_height="777dp"
+                android:background="@color/window_background"
+                android:clipToPadding="false"
+                android:layout_marginTop="132dp"
+                android:orientation="vertical">
+
+                <!-- TODO: Dummy View for scroll. remove this view.-->
+            <TextView
+                android:text="账户名"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:id="@+id/personal_info_account"
+                android:textAppearance="@style/TextAppearance.AppCompat"
+                android:gravity="center_vertical|center_horizontal"
+                android:textSize="24sp" />
+
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:gravity="center_vertical">
+
+                <TextView
+                    android:text="真实姓名"
+                    android:layout_width="105dp"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/textView42"
+                    android:gravity="right|center_vertical"
+                    android:paddingRight="10dp" />
+
+                <TextView
+                    android:text="TextView"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/personal_info_name"
+                    android:layout_weight="1"
+                    android:textAppearance="@style/TextAppearance.AppCompat"
+                    android:paddingLeft="10dp" />
+            </LinearLayout>
+                <LinearLayout
+                    android:orientation="horizontal"
+                    android:layout_width="match_parent"
+                    android:background="@color/my_background2"
+                    android:layout_height="1sp">
+                </LinearLayout>
+                <LinearLayout
+                    android:orientation="horizontal"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:gravity="center_vertical">
+
+                    <TextView
+                        android:text="性别"
+                        android:layout_width="105dp"
+                        android:layout_height="wrap_content"
+                        android:gravity="right|center_vertical"
+                        android:paddingRight="10dp" />
+
+                    <TextView
+                        android:text="TextView"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/personal_info_sex"
+                        android:layout_weight="1"
+                        android:textAppearance="@style/TextAppearance.AppCompat"
+                        android:paddingLeft="10dp" />
+                </LinearLayout>
+                <LinearLayout
+                    android:orientation="horizontal"
+                    android:layout_width="match_parent"
+                    android:background="@color/my_background2"
+                    android:layout_height="1sp">
+                </LinearLayout>
+
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:gravity="center_vertical">
+
+                <TextView
+                    android:text="联系方式"
+                    android:layout_width="105dp"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/textView41"
+                    android:gravity="right|center_vertical"
+                    android:paddingRight="10dp" />
+
+                <TextView
+                    android:text="TextView"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/personal_info_phone"
+                    android:layout_weight="1"
+                    android:textAppearance="@style/TextAppearance.AppCompat"
+                    android:paddingLeft="10dp" />
+            </LinearLayout>
+                <LinearLayout
+                    android:orientation="horizontal"
+                    android:layout_width="match_parent"
+                    android:background="@color/my_background2"
+                    android:layout_height="1sp">
+                </LinearLayout>
+
+                <LinearLayout
+                    android:orientation="horizontal"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:gravity="center_vertical">
+
+                    <TextView
+                        android:text="居住地址"
+                        android:layout_width="105dp"
+                        android:layout_height="wrap_content"
+                        android:gravity="right|center_vertical"
+                        android:paddingRight="10dp" />
+
+                    <TextView
+                        android:text="TextView"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/personal_info_addres"
+                        android:layout_weight="1"
+                        android:textAppearance="@style/TextAppearance.AppCompat"
+                        android:paddingLeft="10dp" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:orientation="horizontal"
+                    android:layout_width="match_parent"
+                    android:background="@color/my_background2"
+                    android:layout_height="1sp">
+                </LinearLayout>
+
+                <LinearLayout
+                android:id="@+id/personal_typle"
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:gravity="center_vertical">
+
+                    <TextView
+                    android:text="教师等级"
+                    android:layout_width="105dp"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/textView40"
+                    android:gravity="right|center_vertical"
+                    android:paddingRight="10dp" />
+
+                    <TextView
+                    android:text="TextView"
+                    android:layout_width="230dp"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/personal_info_typle"
+                    android:textAppearance="@style/TextAppearance.AppCompat"
+                    android:paddingLeft="10dp" />
+
+                    <TextView
+                        android:text=">"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:id="@+id/textView3"
+                        android:gravity="center"
+                        android:textSize="24sp" />
+
+                </LinearLayout>
+            </LinearLayout>
+
+            <!-- Header bar -->
+            <FrameLayout
+                android:id="@+id/header_bar_container"
+                android:layout_width="match_parent"
+                android:layout_height="66dp"
+                android:clipChildren="false"
+                android:clipToPadding="false">
+
+                <!-- background -->
+                <!-- height assigned dynamically, and fill the ActionBar gaps. -->
+
+                <!-- contents -->
+                <View
+                    android:id="@+id/header_bar_background"
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:background="@color/colorPrimary"/>
+
+                <!-- shadow -->
+                <View
+                    android:id="@+id/header_bar_shadow"
+                    android:layout_width="match_parent"
+                    android:layout_height="6dp"
+                    android:layout_gravity="bottom"
+                    android:background="@color/window_background"/>
+                        <LinearLayout
+                            android:id="@+id/header_bar_contents"
+                            android:layout_width="match_parent"
+                            android:layout_height="66dp"
+                            android:orientation="vertical"
+                            />
+
+                <edu.zcs.com.educationsys.util.view.CircleImageView
+                    android:layout_width="100dp"
+                    android:layout_height="100dp"
+                    android:src="@drawable/erro"
+                    app:border_width="2dp"
+                    app:border_color="@color/window_background"
+                    android:id="@+id/personal_info_header"
+                    android:layout_marginBottom="33dp"
+                    android:layout_gravity="center"
+                    android:layout_centerHorizontal="true" />
+
+
+                <!--<TextView
+                    android:id="@+id/header_bar_title"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Placeholder"/>-->
+            </FrameLayout>
+        </FrameLayout>
+    </edu.zcs.com.educationsys.util.view.ObservableScrollView>
+
+    <LinearLayout
+        android:id="@+id/personal_info_submit"
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:background="@color/my_background4"
+        android:gravity="center_vertical"
+        android:layout_marginTop="-50dp"
+        android:layout_height="50dp">
+
+        <TextView
+            android:text="修改资料"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:id="@+id/textView39"
+            android:textColor="@color/window_background"
+            android:textSize="20dp"
+            android:layout_weight="1" />
+</LinearLayout>
+</LinearLayout>

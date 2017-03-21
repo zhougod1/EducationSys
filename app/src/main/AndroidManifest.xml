@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="edu.zcs.com.educationsys">
+
+    <uses-feature android:name="android.hardware.camera" />
+    <uses-feature android:name="android.hardware.camera.autofocus" />
+
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.SET_WALLPAPER" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+
+    <application
+        android:name=".util.tools.AppApplication"
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme">
+        <activity
+            android:name=".activity.MainActivity"
+            android:label="@string/app_name"
+            android:theme="@style/AppTheme.NoActionBar">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".activity.LoginActivity"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity android:name=".activity.RecyclerviewActivity" />
+        <activity
+            android:name=".activity.ReleaseActivity"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".activity.QuestionInfoActivity"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity android:name=".activity.MyQuestionActivity" />
+        <activity
+            android:name=".activity.OrderActivity"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".activity.NewsActivity"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity android:name=".fragment.BillFragment" />
+        <activity android:name=".activity.PersonalAlterActivity"
+                  android:theme="@style/AppTheme.NoActionBar"/>
+        <activity android:name=".activity.PersonalActivity" />
+        <activity android:name=".activity.NewsOrderActivity" />
+        <activity android:name=".activity.NewsQuestionActivity" />
+        <activity android:name=".activity.ReleaseQuestionActivity" />
+        <activity
+            android:name=".activity.PhotoActivity"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".activity.ImageGridActivity"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".activity.TestPicActivity"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity android:name=".activity.MyOrderActivity" />
+        <activity android:name=".activity.LoardActivity"></activity>
+    </application>
+
+</manifest>

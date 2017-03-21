@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/personal"
+            android:icon="@drawable/ic_menu_camera"
+            android:title="个人中心" />
+        <item
+            android:id="@+id/news"
+            android:icon="@drawable/ic_menu_gallery"
+            android:title="我的消息" />
+        <item
+            android:id="@+id/myquestion"
+            android:icon="@drawable/ic_menu_slideshow"
+            android:title="发布的问题" />
+        <item
+            android:id="@+id/myorder"
+            android:icon="@drawable/ic_menu_manage"
+            android:title="发布的订单" />
+    </group>
+
+    <item android:title="Communicate">
+        <menu>
+            <item
+                android:id="@+id/nav_share"
+                android:icon="@drawable/ic_menu_share"
+                android:title="Share" />
+            <item
+                android:id="@+id/nav_send"
+                android:icon="@drawable/ic_menu_send"
+                android:title="Send" />
+        </menu>
+    </item>
+    <group android:checkableBehavior="single">
+
+        <item
+            android:id="@+id/app_bar_search"
+            android:actionViewClass="android.support.v7.widget.SearchView"
+            android:icon="@drawable/erro"
+            android:title="Search" />
+    </group>
+
+</menu>

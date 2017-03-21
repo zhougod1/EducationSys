@@ -1,0 +1,234 @@
+<?xml version="1.0" encoding="utf-8"?>
+ <android.support.v7.widget.CardView
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/cardview"
+     app:cardCornerRadius="3dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+     <LinearLayout
+         android:orientation="horizontal"
+         android:layout_width="match_parent"
+         android:layout_height="match_parent"
+         android:paddingBottom="10dp"
+         android:paddingTop="10dp">
+         <LinearLayout
+             android:layout_height="wrap_content"
+             android:layout_weight="2"
+             android:paddingBottom="8dp"
+             android:paddingLeft="8dp"
+             android:paddingRight="6dp"
+             android:paddingTop="8dp"
+             android:gravity="center_horizontal"
+             android:layout_width="0dp">
+         <ImageView
+             android:layout_width="80dp"
+             android:layout_height="80dp"
+             android:src="@drawable/physics"
+             android:id="@+id/work_Icon"
+
+             />
+         </LinearLayout>
+         <LinearLayout
+             android:orientation="vertical"
+             android:layout_height="match_parent"
+             android:layout_weight="4.5"
+             android:paddingLeft="10dp"
+             android:paddingRight="10dp"
+             android:layout_width="0dp">
+
+             <LinearLayout
+                 android:orientation="horizontal"
+                 android:layout_width="match_parent"
+                 android:layout_height="match_parent"
+                 android:layout_weight="1"
+                 android:gravity="center_vertical"
+                 >
+
+                 <TextView
+                     android:text="标题！！！！！"
+                     android:layout_width="wrap_content"
+                     android:layout_height="match_parent"
+                     android:id="@+id/work_Titile"
+                     android:textSize="16sp"
+                     android:textColor="@color/abc_input_method_navigation_guard"
+                     android:gravity="center_vertical" />
+
+                 <TextView
+                     android:text="01-08"
+                     android:layout_width="match_parent"
+                     android:layout_height="match_parent"
+                     android:id="@+id/work_Date"
+                     android:gravity="bottom|right"
+                     android:textSize="10sp" />
+             </LinearLayout>
+
+             <LinearLayout
+                 android:orientation="horizontal"
+                 android:layout_width="match_parent"
+                 android:layout_height="match_parent"
+                 android:layout_weight="1">
+
+                 <LinearLayout
+                     android:orientation="vertical"
+                     android:layout_width="match_parent"
+                     android:layout_height="match_parent"
+                     android:layout_weight="1">
+
+                     <LinearLayout
+                         android:orientation="horizontal"
+                         android:layout_width="match_parent"
+                         android:layout_height="match_parent"
+                         android:layout_weight="1"
+                         >
+
+                         <TextView
+                             android:text="类型:"
+                             android:layout_width="0dp"
+                             android:layout_height="wrap_content"
+                             android:layout_weight="1"
+                             android:gravity="left|center_horizontal" />
+
+                         <TextView
+                             android:text="兼职"
+                             android:layout_width="0dp"
+                             android:layout_height="wrap_content"
+                             android:id="@+id/work_Tyoe"
+                             android:layout_weight="2"
+                             android:textColor="@color/abc_input_method_navigation_guard"
+                             android:gravity="left"
+                             android:layout_marginLeft="10dp" />
+                     </LinearLayout>
+
+                     <LinearLayout
+                         android:orientation="horizontal"
+                         android:layout_width="match_parent"
+                         android:layout_height="match_parent"
+                         android:layout_weight="1"
+                         >
+
+                         <TextView
+                             android:text="地区:"
+                             android:layout_width="0dp"
+                             android:layout_height="wrap_content"
+                             android:id="@+id/textView19"
+                             android:layout_weight="1"
+                             android:gravity="left|center_vertical" />
+
+                         <TextView
+                             android:text=""
+                             android:layout_width="0dp"
+                             android:layout_height="wrap_content"
+                             android:id="@+id/work_Address"
+                             android:layout_weight="2"
+                             android:textColor="@color/abc_input_method_navigation_guard"
+                             android:gravity="left"
+                             android:layout_marginLeft="10dp" />
+                     </LinearLayout>
+                 </LinearLayout>
+
+                 <LinearLayout
+                     android:orientation="vertical"
+                     android:layout_width="match_parent"
+                     android:layout_height="match_parent"
+                     android:layout_weight="1">
+
+                     <LinearLayout
+                         android:orientation="horizontal"
+                         android:layout_width="match_parent"
+                         android:layout_height="match_parent"
+                         android:layout_weight="1"
+                         >
+
+                         <TextView
+                             android:text="科目:"
+                             android:layout_width="match_parent"
+                             android:layout_height="wrap_content"
+                             android:id="@+id/textView24"
+                             android:gravity="center_vertical|center"
+                             android:layout_weight="1" />
+
+                         <TextView
+                             android:text=""
+                             android:layout_width="match_parent"
+                             android:layout_height="wrap_content"
+                             android:id="@+id/work_Course"
+                             android:layout_weight="1"
+                             android:textColor="@color/abc_input_method_navigation_guard" />
+                     </LinearLayout>
+
+                     <LinearLayout
+                         android:orientation="horizontal"
+                         android:layout_width="match_parent"
+                         android:layout_height="match_parent"
+                         android:layout_weight="1"
+                         >
+
+                         <TextView
+                             android:text="水平:"
+                             android:layout_width="match_parent"
+                             android:layout_height="wrap_content"
+                             android:id="@+id/textView20"
+                             android:layout_weight="1"
+                             android:gravity="center_vertical|center" />
+
+                         <TextView
+                             android:text=""
+                             android:layout_width="match_parent"
+                             android:layout_height="wrap_content"
+                             android:id="@+id/work_Level"
+                             android:layout_weight="1"
+                             android:textColor="@color/abc_input_method_navigation_guard" />
+                     </LinearLayout>
+
+                 </LinearLayout>
+             </LinearLayout>
+         </LinearLayout>
+
+         <LinearLayout
+             android:orientation="vertical"
+             android:layout_height="match_parent"
+             android:gravity="center_vertical|center_horizontal"
+             android:layout_weight="2"
+             android:layout_width="0dp">
+
+
+             <LinearLayout
+                 android:orientation="horizontal"
+                 android:layout_width="match_parent"
+                 android:layout_height="30dp"
+                 android:gravity="center_horizontal">
+
+                 <TextView
+                     android:layout_width="match_parent"
+                     android:layout_height="match_parent"
+                     android:id="@+id/work_Pay"
+                     android:gravity="top|right|center_horizontal"
+                     android:layout_weight="1"
+                     android:text="￥8944"
+                     android:textSize="16sp"
+                     android:textColor="@color/error_color" />
+
+                 <TextView
+                     android:text="/小时"
+                     android:layout_width="wrap_content"
+                     android:layout_height="match_parent"
+                     android:id="@+id/work_Time"
+                     android:gravity="bottom"
+                     android:layout_marginRight="10dp" />
+             </LinearLayout>
+
+             <TextView
+                 android:text="日结"
+                 android:layout_width="wrap_content"
+                 android:layout_height="wrap_content"
+                 android:id="@+id/work_Cycle"
+                 android:layout_marginTop="8dp" />
+         </LinearLayout>
+
+     </LinearLayout>
+
+ </android.support.v7.widget.CardView>
+
+

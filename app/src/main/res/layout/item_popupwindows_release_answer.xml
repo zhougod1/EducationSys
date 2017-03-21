@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/bg_transparent">
+
+    <LinearLayout
+        android:id="@+id/question_answer"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:background="#ffffff"
+        android:orientation="vertical" >
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="2dp"
+            android:background="@color/colorPrimary" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:orientation="horizontal"
+            >
+
+            <TextView
+                android:id="@+id/item_popupwindows_camera"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@drawable/bt_nobgd"
+                android:textColor="#585858"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="65dp"
+                android:textSize="18sp"
+                android:gravity="center_vertical"
+                android:text="回答" />
+
+            <Button
+                android:layout_width="60dp"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="-65dp"
+                android:text="取消"
+                android:id="@+id/release_cancel" />
+        </LinearLayout>
+
+        <TextView
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:layout_width="match_parent"
+            android:layout_height="1px"
+            android:background="@color/my_background2"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingRight="10dp"
+            android:paddingTop="10dp"
+            android:paddingBottom="10dp"
+            android:paddingLeft="10dp"
+            android:orientation="horizontal" >
+
+            <EditText
+                android:id="@+id/item_popupwindows_content"
+                android:layout_width="match_parent"
+                android:layout_height="200dp"
+                android:gravity="top"
+                android:inputType="text"
+                android:hint="请写下你的回答...."
+                android:textColor="#585858"
+                android:textSize="18sp"
+                />
+        </LinearLayout>
+
+        <TextView
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:layout_width="match_parent"
+            android:layout_height="1px"
+            android:background="@color/my_background2"/>
+
+        <Button
+            android:id="@+id/release_ensure"
+            android:layout_width="match_parent"
+            android:layout_height="55dp"
+            android:background="@drawable/bt_nobgd"
+            android:textColor="#585858"
+            android:textSize="18sp"
+            android:text="提交" />
+    </LinearLayout>
+
+</RelativeLayout>

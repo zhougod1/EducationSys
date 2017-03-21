@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edu.zcs.com.educationsys.util.view.EmptyView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:gravity="center_horizontal"
+        android:orientation="vertical">
+
+        <ImageView
+            android:layout_width="120dp"
+            android:layout_height="120dp"
+            android:src="@android:drawable/ic_delete"
+            android:id="@+id/imageView" />
+
+        <TextView
+            android:id="@+id/txt_empty_tip"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="20sp"
+            android:text="暂时没有数据"/>
+
+        <Button
+            android:text="重新加载"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:id="@+id/view_onRefresh" />
+
+
+    </LinearLayout>
+</edu.zcs.com.educationsys.util.view.EmptyView>

@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp"
+        android:paddingTop="10dp"
+        android:background="@color/window_background">
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center_vertical">
+            <edu.zcs.com.educationsys.util.view.CircleImageView
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:src="@drawable/erro"
+                app:border_width="2dp"
+                app:border_color="@color/window_background"
+                android:id="@+id/question_info_aimg"
+                android:layout_alignParentTop="true"
+                android:layout_centerHorizontal="true" />
+            <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <TextView
+                    android:text="测试员"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/question_info_aname"
+                    android:textSize="17sp"
+                    android:textColor="@color/my_color_black"
+                    android:layout_weight="1" />
+
+                <TextView
+                    android:text="2017-1-2"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/question_info_time"
+                    android:layout_weight="1" />
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:text="[数学]"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="21dp"
+                android:id="@+id/question_info_course"
+                android:layout_marginLeft="40dp" />
+
+            <TextView
+                android:id="@+id/question_info_title"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:textColor="@color/my_color_black"
+                android:text="测试标题！"
+                android:textSize="21dp"
+                />
+        </LinearLayout>
+
+        <TextView
+            android:text="立志、工作、成就，是人类活动的三大要素。
+    立志是事业的大门，工作是登堂入室的旅程。
+    这旅程的尽头有
+    个成功在等待着，来庆祝你的努力结果"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/question_info_context"
+            android:textAppearance="@style/TextAppearance.AppCompat"
+            android:layout_marginLeft="40dp" />
+    </LinearLayout>
+
+</LinearLayout>
