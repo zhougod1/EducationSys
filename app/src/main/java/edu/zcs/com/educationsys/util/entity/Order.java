@@ -14,6 +14,7 @@ public class Order {
     private String olevel;
     private String otime;
     private String odate;
+    private String ostatic;
     private int pay;
 
     public String getOid() {
@@ -96,9 +97,13 @@ public class Order {
         this.pay = pay;
     }
 
-    public String getOlevel() {return olevel;}
+    public String getOlevel() {
+        return olevel;
+    }
 
-    public void setOlevel(String olevel) {this.olevel = olevel; }
+    public void setOlevel(String olevel) {
+        this.olevel = olevel;
+    }
 
     public String getOtime() {
         return otime;
@@ -108,7 +113,19 @@ public class Order {
         this.otime = otime;
     }
 
-    public String getOdate() {return odate;}
+    public String getOdate() {
+        return odate;
+    }
 
-    public void setOdate(String odate) {this.odate = odate;}
+    public void setOdate(String odate) {
+        this.odate = odate;
+    }
+
+    public String getOstatic() {
+        return ostatic;
+    }
+
+    public void setOstatic(String ostatic) {
+        this.ostatic = ostatic;
+    }
 }
