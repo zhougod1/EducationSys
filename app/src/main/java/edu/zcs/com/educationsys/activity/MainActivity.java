@@ -21,7 +21,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import edu.zcs.com.educationsys.R;
-import edu.zcs.com.educationsys.fragment.HomeFragment;
+import edu.zcs.com.educationsys.fragment.BillFragment;
 import edu.zcs.com.educationsys.fragment.OrderFragment;
 import edu.zcs.com.educationsys.fragment.QuestionFragment;
 
@@ -33,7 +33,7 @@ public class MainActivity extends AppCompatActivity
     private DrawerLayout drawer;
     private NavigationView navigationView;
     private FragmentManager myfragmentManager;
-    private HomeFragment home;
+    private BillFragment home;
     private OrderFragment order;
     private QuestionFragment question;
     private ImageView img1, img2, img3;
@@ -100,7 +100,7 @@ public class MainActivity extends AppCompatActivity
                 text_1.setTextColor(Color.rgb(65, 186, 255));
                 if (home == null) {
                     // 如果ContactsFragment为空，则创建一个并添加到界面上
-                    home = new HomeFragment();
+                    home = new BillFragment();
                     transaction.add(R.id.fragment,home);
                 } else {
                     // 如果ContactsFragment不为空，则直接将它显示出来

@@ -20,9 +20,10 @@ import edu.zcs.com.educationsys.util.tools.DateUtils;
 import edu.zcs.com.educationsys.util.tools.HttpUtils;
 import edu.zcs.com.educationsys.util.tools.Options;
 
-public class BillAdapter extends BaseAdapter{
+public class BillAdapter extends BaseAdapter implements View.OnClickListener{
 
     protected ImageLoader imageLoader;
+    private OnListViewItemClickListener onItemClickListener=null;
     private DisplayImageOptions options;
     private LayoutInflater inflater;
     private Context context;
@@ -34,6 +35,10 @@ public class BillAdapter extends BaseAdapter{
         imageLoader=ImageLoader.getInstance();
         options= Options.getListOptions();
         inflater=LayoutInflater.from(context);
+    }
+
+    public void setList(List<Map<String, Object>> list) {
+        this.list = list;
     }
 
     @Override
@@ -72,11 +77,27 @@ public class BillAdapter extends BaseAdapter{
         holder.bill_title.setText(list.get(position).get("title").toString());
         holder.bill_static.setText(list.get(position).get("static").toString());
         holder.bill_week.setText(DateUtils.showDate(list.get(position).get("date").toString(),"yyyy-MM-dd"));
+        holder.b_id=list.get(position).get("b_id").toString();
         if(list!=null&&list.size()>0){
             imageLoader.displayImage(HttpUtils.ImageHOST+list.get(position).get("head"),holder.bill_head,options);
         }
 
         return convertView;
+    }
+
+    public void setOnItemClickListener(OnListViewItemClickListener onItemClickListener) {
+        this.onItemClickListener =onItemClickListener;
+    }
+
+    @Override
+    public void onClick(View v) {
+        if(onItemClickListener!=null){
+            onItemClickListener.onItemClick(v,((ViewHolder)v.getTag()).b_id);
+        }
+    }
+
+    public static interface OnListViewItemClickListener {
+        void onItemClick(View view, String data);
     }
 
     public class ViewHolder{
@@ -86,5 +107,6 @@ public class BillAdapter extends BaseAdapter{
         public TextView bill_title;
         public TextView bill_static;
         public ImageView bill_head;
+        public String b_id;
     }
 }
