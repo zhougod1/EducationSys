@@ -7,7 +7,7 @@
 
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.SET_WALLPAPER" />
-    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
 
     <application
@@ -45,8 +45,9 @@
             android:name=".activity.NewsActivity"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity android:name=".fragment.BillFragment" />
-        <activity android:name=".activity.PersonalAlterActivity"
-                  android:theme="@style/AppTheme.NoActionBar"/>
+        <activity
+            android:name=".activity.PersonalAlterActivity"
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity android:name=".activity.PersonalActivity" />
         <activity android:name=".activity.NewsOrderActivity" />
         <activity android:name=".activity.NewsQuestionActivity" />
@@ -61,7 +62,8 @@
             android:name=".activity.TestPicActivity"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity android:name=".activity.MyOrderActivity" />
-        <activity android:name=".activity.LoardActivity"></activity>
+        <activity android:name=".activity.LoardActivity" />
+        <activity android:name=".activity.BillInfoActivity"></activity>
     </application>
 
 </manifest>

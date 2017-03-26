@@ -92,7 +92,6 @@
         </LinearLayout>
 
         <LinearLayout
-            android:orientation="horizontal"
             android:layout_width="match_parent"
             android:background="@color/my_background2"
             android:layout_height="1sp"/>

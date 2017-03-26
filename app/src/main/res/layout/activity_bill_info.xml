@@ -1,0 +1,387 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_bill_info"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    tools:context="edu.zcs.com.educationsys.activity.BillInfoActivity">
+    <RelativeLayout
+        android:id="@+id/bill_info_relative"
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="?attr/colorPrimary"
+        android:gravity="center_vertical">
+
+        <TextView
+            android:text="订单详情"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/textView17"
+            android:layout_weight="0.04"
+            android:layout_centerHorizontal="true"
+            android:textColor="@color/window_background"
+            android:textSize="18sp"
+            android:layout_centerVertical="true"
+            tools:textStyle="normal" />
+
+        <TextView
+            android:text="返回"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_weight="0.04"
+            android:gravity="center"
+            android:textColor="@color/window_background"
+            android:textSize="16sp"
+            android:paddingRight="20dp"
+            android:paddingLeft="20dp"
+            android:layout_alignParentStart="true"
+            android:id="@+id/back" />
+
+    </RelativeLayout>
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_horizontal"
+        android:layout_below="@+id/bill_info_relative"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp"
+        android:paddingTop="10dp"
+        android:clipChildren="true"
+        android:background="@drawable/list_bg">
+
+        <TextView
+            android:text="测试标题"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/textView6"
+            android:textSize="24sp"
+            android:textColor="@color/button_material_dark" />
+
+        <RelativeLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingTop="20dp"
+            android:paddingBottom="8dp">
+
+            <TextView
+                android:text="￥80.0"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/textView54"
+                android:textSize="18sp"
+                android:layout_centerHorizontal="true" />
+
+            <TextView
+                android:text="日结"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/textView53"
+                android:background="@color/my_background2"
+                android:textColor="@color/window_background"
+                android:layout_alignParentRight="true" />
+
+            <TextView
+                android:text="/小时"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/textView51"
+                android:layout_toRightOf="@+id/textView54"
+                android:gravity="bottom"
+                android:layout_alignParentBottom="false"
+                android:layout_marginTop="5dp" />
+        </RelativeLayout>
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center_horizontal">
+
+            <TextView
+                android:text="待处理"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/textView55"
+                android:layout_weight="1" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:paddingBottom="2dp"
+            android:paddingTop="2dp">
+
+            <TextView
+                android:text="科目"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:id="@+id/textView58"
+                android:layout_weight="1"
+                android:gravity="left" />
+
+            <TextView
+                android:text="TextView"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:id="@+id/bill_acourse"
+                android:layout_weight="4"
+                android:gravity="center_horizontal" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingBottom="2dp"
+            android:paddingTop="2dp">
+
+            <TextView
+                android:text="联系人"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:id="@+id/textView62"
+                android:layout_weight="1"
+                android:gravity="left" />
+
+            <TextView
+                android:text="TextView"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:id="@+id/bill_account"
+                android:layout_weight="4"
+                android:gravity="center_horizontal" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingBottom="2dp"
+            android:paddingTop="2dp">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:id="@+id/textView64"
+                android:layout_weight="1"
+                android:text="电话"
+                android:gravity="left" />
+
+            <TextView
+                android:text="TextView"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:id="@+id/bill_aphone"
+                android:layout_weight="4"
+                android:gravity="center_horizontal" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingBottom="2dp"
+            android:paddingTop="2dp">
+
+            <TextView
+                android:text="地区"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:id="@+id/textView75"
+                android:layout_weight="1"
+                android:gravity="left" />
+
+            <TextView
+                android:text="TextView"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:id="@+id/bill_area"
+                android:layout_weight="4"
+                android:gravity="center_horizontal" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingTop="2dp"
+            android:paddingBottom="2dp">
+
+            <TextView
+                android:text="住址"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:id="@+id/textView77"
+                android:layout_weight="1"
+                android:gravity="left" />
+
+            <TextView
+                android:text="TextView"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:id="@+id/bill_address"
+                android:layout_weight="4"
+                android:gravity="center_horizontal" />
+
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:background="@color/my_background2"
+            android:layout_height="1sp"/>
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:gravity="center_vertical">
+
+            <TextView
+                android:text="申请人"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/textView65"
+                android:layout_weight="1"
+                android:gravity="left"
+                android:textColor="@color/button_material_dark" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="2dp"
+            android:layout_marginTop="2dp">
+
+            <TextView
+                android:text="账号"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:id="@+id/textView67"
+                android:layout_weight="1"
+                android:gravity="left" />
+
+            <TextView
+                android:text="TextView"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:id="@+id/bill_anaccount"
+                android:layout_weight="4"
+                android:gravity="center_horizontal" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingBottom="2dp"
+            android:paddingTop="2dp">
+
+            <TextView
+                android:text="联系电话"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:id="@+id/textView69"
+                android:layout_weight="1"
+                android:gravity="left" />
+
+            <TextView
+                android:text="TextView"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:id="@+id/bill_anphone"
+                android:layout_weight="4"
+                android:gravity="center_horizontal" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingBottom="10dp"
+            android:paddingTop="2dp">
+
+            <TextView
+                android:text="留言"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:id="@+id/textView71"
+                android:layout_weight="1"
+                android:gravity="left" />
+
+            <TextView
+                android:text="TextView"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:id="@+id/bill_message"
+                android:layout_weight="4"
+                android:gravity="center_horizontal" />
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:background="@color/my_background2"
+            android:layout_height="1sp"/>
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingBottom="8dp"
+            android:paddingTop="8dp">
+
+            <TextView
+                android:text="详情>"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/textView73"
+                android:layout_weight="7.91"
+                android:gravity="right" />
+
+        </LinearLayout>
+    </LinearLayout>
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_alignParentBottom="true"
+        android:id="@+id/bill_controll"
+        android:background="@color/window_background">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:background="@color/my_background2"
+            android:layout_height="1dp"
+            android:layout_alignTop="@+id/bill_controll" />
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="1dp">
+
+            <Button
+                android:text="拒绝"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/bill_cancel"
+                android:layout_weight="1"
+                android:layout_marginLeft="10dp" />
+
+            <Button
+                android:text="同意"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/bill_ensure"
+                android:layout_weight="1"
+                android:layout_marginRight="10dp"
+                android:layout_marginLeft="5dp" />
+        </LinearLayout>
+
+    </LinearLayout>
+
+</RelativeLayout>
