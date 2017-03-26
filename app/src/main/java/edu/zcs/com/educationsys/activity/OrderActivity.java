@@ -2,7 +2,6 @@ package edu.zcs.com.educationsys.activity;
 
 import android.content.Context;
 import android.content.DialogInterface;
-import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.drawable.BitmapDrawable;
 import android.os.Bundle;
@@ -28,7 +27,6 @@ import java.util.HashMap;
 import java.util.Map;
 
 import edu.zcs.com.educationsys.R;
-import edu.zcs.com.educationsys.fragment.BillFragment;
 import edu.zcs.com.educationsys.util.entity.Account;
 import edu.zcs.com.educationsys.util.entity.Order;
 import edu.zcs.com.educationsys.util.tools.CourseUtils;
@@ -62,16 +60,12 @@ public class OrderActivity extends AppCompatActivity {
                     my_order_cycle.setText(order.getOcycle());
                     my_order_info.setText(order.getOinfo());
                     my_order_img.setImageResource(CourseUtils.getCourseIcon(order.getOcourse()));
-                    if(order.getOstatic().equals("申请中")){
-                        order_release.setText(order.getOstatic());
-                        order_release.setBackgroundColor(getResources().getColor(R.color.switch_thumb_disabled_material_light));
-                    }
                     break;
                 case 2:
                     if((Boolean) msg.obj) {
                         Toast.makeText(OrderActivity.this, "提交成功,请耐心等待对方的回复", Toast.LENGTH_SHORT).show();
-                        Intent i=new Intent(OrderActivity.this, BillFragment.class);
-                        startActivity(i);
+//                        Intent i=new Intent(OrderActivity.this, BillFragment.class);
+//                        startActivity(i);
                         finish();
                     }else{
                         Toast.makeText(OrderActivity.this, "提交失败,请稍后重试", Toast.LENGTH_SHORT).show();
@@ -105,9 +99,7 @@ public class OrderActivity extends AppCompatActivity {
         order_release.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(!order.getOstatic().equals("申请中")) {
-                    new PopupWindows(OrderActivity.this, order_release);
-                }
+               new PopupWindows(OrderActivity.this, order_release);
             }
         });
         init();

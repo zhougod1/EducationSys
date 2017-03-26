@@ -11,6 +11,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AbsListView;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import com.alibaba.fastjson.JSONObject;
 
@@ -26,7 +27,7 @@ import edu.zcs.com.educationsys.util.view.LoadingView;
 
 public class BillFragment extends Fragment implements SwipeRefreshLayout.OnRefreshListener {
 
-    protected final static String URL=HttpUtils.HOST2+"/Bill/queryByAid";
+    protected final static String URL=HttpUtils.HOST2+"/Edu/Bill/queryByAid";
     private List<Map<String,Object>> date;
     private LoadingView loading;
     private EmptyView empty;
@@ -39,6 +40,8 @@ public class BillFragment extends Fragment implements SwipeRefreshLayout.OnRefre
             super.handleMessage(msg);
             myAdapter.setList(date);
             myAdapter.notifyDataSetChanged();
+            loading.hideLoading();
+            swipeRefreshLayout.setRefreshing(false);
         }
     };
 
@@ -50,13 +53,16 @@ public class BillFragment extends Fragment implements SwipeRefreshLayout.OnRefre
         View view=inflater.inflate(R.layout.activity_bill_fragment, container, false);
         empty = (EmptyView) view.findViewById(R.id.empty_view);
         loading = (LoadingView) view.findViewById(R.id.loading_view);
+        init();
         myAdapter =new BillAdapter(date,getActivity());
         if(!HttpUtils.isNetworkAvailable(getActivity())) {
             loading.hideLoading();
         }
         date = new ArrayList<Map<String, Object>>();
         bill_listview =(ListView)view.findViewById(R.id.bill_listview);
+        bill_listview.setAdapter(myAdapter);
         bill_listview.setEmptyView(empty);
+
         swipeRefreshLayout = (SwipeRefreshLayout) view.findViewById(R.id.bill_swipe_container);
         bill_listview.setOnScrollListener(new AbsListView.OnScrollListener() {
             @Override
@@ -74,25 +80,28 @@ public class BillFragment extends Fragment implements SwipeRefreshLayout.OnRefre
         return view;
     }
 
-    void init(){
-
+    public void init(){
         new Thread(new Runnable() {
             @Override
             public void run() {
-                JSONObject jsonObject = HttpUtils.getJsonObject(URL);
+                JSONObject jsonObject = HttpUtils.getJsonObject(URL+"?aid="+"e4d4c8ff5a74670e015a7467b2360000");
                 if (jsonObject == null)
                     return;
                 date =(List<Map<String,Object>>)JSONObject.parseObject(jsonObject.getString("result"),java.util.List.class);
-
                 Message message = new Message();
                 mhandler.sendMessage(message);
-
             }
         }).start();
     }
 
     @Override
     public void onRefresh() {
-        init();
+
+        if (HttpUtils.isNetworkAvailable(getActivity())) {
+            init();
+            Toast.makeText(getActivity(), "更新成功", Toast.LENGTH_SHORT).show();
+        } else {
+            Toast.makeText(getActivity(), "暂无网络", Toast.LENGTH_SHORT).show();
+        }
     }
 }

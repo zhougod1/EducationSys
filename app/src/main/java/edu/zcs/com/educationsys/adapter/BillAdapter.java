@@ -72,11 +72,11 @@ public class BillAdapter extends BaseAdapter implements View.OnClickListener{
         }else{
             holder= (ViewHolder) convertView.getTag();
         }
-        holder.bill_date.setText(list.get(position).get("date").toString().substring(4));
+        holder.bill_date.setText(list.get(position).get("time").toString().substring(5));
         holder.bill_pay.setText("￥"+list.get(position).get("pay"));
-        holder.bill_title.setText(list.get(position).get("title").toString());
+        holder.bill_title.setText(list.get(position).get("otitle").toString());
         holder.bill_static.setText(list.get(position).get("static").toString());
-        holder.bill_week.setText(DateUtils.showDate(list.get(position).get("date").toString(),"yyyy-MM-dd"));
+        holder.bill_week.setText(DateUtils.showDate(list.get(position).get("time").toString(),"yyyy-MM-dd"));
         holder.b_id=list.get(position).get("b_id").toString();
         if(list!=null&&list.size()>0){
             imageLoader.displayImage(HttpUtils.ImageHOST+list.get(position).get("head"),holder.bill_head,options);

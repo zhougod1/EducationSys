@@ -57,7 +57,7 @@
         android:layout_height="match_parent"
         android:layout_below="@+id/order_info_title"
         android:layout_alignParentStart="true"
-        android:layout_above="@+id/textView6">
+        android:layout_above="@+id/order_release">
         <include
             layout="@layout/order_context"
             android:layout_width="match_parent"

@@ -109,6 +109,8 @@ public class DateUtils {
         } catch (Exception e) {}
         Calendar cal= Calendar.getInstance();
         cal.setTime(my);
+        Calendar cal1= Calendar.getInstance();
+        cal1.setTime(now);
         Long yearNum = Long.valueOf(cal.get(Calendar.YEAR));
         int month =cal.get(Calendar.MONTH);
         int day =cal.get(Calendar.DAY_OF_MONTH);
@@ -117,7 +119,7 @@ public class DateUtils {
 
         long addtime =my.getTime();
         long today=System.currentTimeMillis();
-        int  nowDay =now.getDay();
+        int  nowDay =cal1.get(Calendar.DAY_OF_MONTH);
         String result="";
         long l=today-addtime;//当前时间与给定时间差的毫秒数
         long days=l/(24*60*60*1000);//这个时间相差的天数整数，大于1天为前天的时间了，小于24小时则为昨天和今天的时间
