@@ -1,9 +1,8 @@
 package edu.zcs.com.educationsys.activity;
 
 import android.os.Bundle;
-import android.os.Handler;
-import android.os.Message;
 import android.support.v7.app.AppCompatActivity;
+import android.view.View;
 import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -14,9 +13,10 @@ import java.util.List;
 import java.util.Map;
 
 import edu.zcs.com.educationsys.R;
+import edu.zcs.com.educationsys.util.tools.ACache;
 import edu.zcs.com.educationsys.util.tools.HttpUtils;
 
-public class BillInfoActivity extends AppCompatActivity {
+public class BillInfoActivity extends AppCompatActivity  implements View.OnClickListener{
 
      protected final static String URL= HttpUtils.HOST2+"/Edu/Bill";
     private TextView bill_info_title;
@@ -36,20 +36,14 @@ public class BillInfoActivity extends AppCompatActivity {
     private Button bill_info_cancel;
     private Button bill_info_ensure;
     private LinearLayout bill_info_controller;
-    private List<Map<String,Object>> list;
-
-    Handler mhandler=new Handler(){
-        @Override
-        public void handleMessage(Message msg) {
-            super.handleMessage(msg);
-        }
-    };
+    private Map<String,Object> list;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_bill_info);
 
+        int position=Integer.parseInt(getIntent().getExtras().get("position").toString());
         bill_info_title =(TextView)findViewById(R.id.bill_info_title);
         bill_info_pay =(TextView)findViewById(R.id.bill_info_pay);
         bill_info_time =(TextView)findViewById(R.id.bill_info_time);
@@ -67,21 +61,37 @@ public class BillInfoActivity extends AppCompatActivity {
         bill_info_controller=(LinearLayout)findViewById(R.id.bill_info_controller);
         bill_info_cancel =(Button)findViewById(R.id.bill_info_cancel);
         bill_info_ensure=(Button)findViewById(R.id.bill_info_ensure);
+        ACache cache=ACache.get(this);
+        list=((List<Map<String,Object>>) JSONObject.parseObject(cache.getAsString("bill_list"),java.util.List.class)).get(position);
+        bill_info_title.setText(list.get("otitle").toString());
+        bill_info_pay.setText("￥"+list.get("pay"));
+        bill_info_cycle.setText(list.get("ocycle").toString());
+        bill_info_static.setText(list.get("static").toString());
+        bill_info_course.setText(list.get("ocourse").toString());
+        bill_info_name.setText(list.get("sname").toString());
+        bill_info_area.setText(list.get("oarea").toString());
+        bill_info_address.setText(list.get("oaddress").toString());
+        bill_info_phone.setText(list.get("aphone").toString());
+        bill_info_account.setText(list.get("pname").toString());
+        bill_info_aphone.setText(list.get("pphone").toString());
+        bill_info_message.setText(list.get("message").toString());
+        bill_info_source.setOnClickListener(this);
+        bill_info_controller=(LinearLayout)findViewById(R.id.bill_info_controller);
+        bill_info_cancel.setOnClickListener(this);
+        bill_info_ensure.setOnClickListener(this);
 
     }
 
-    public void init(){
-        new Thread(new Runnable() {
-            @Override
-            public void run() {
-                JSONObject jsonObject = HttpUtils.getJsonObject(URL+"/queryByBid");
-                if (jsonObject == null)
-                    return;
-                list =(List<Map<String,Object>>)JSONObject.parseObject(jsonObject.getString("account"), java.util.ArrayList.class);
-                Message message=new Message();
-                mhandler.sendMessage(message);
-            }
-        }).start();
-    }
+    @Override
+    public void onClick(View v) {
+        switch (v.getId()){
+            case R.id.bill_info_source:
+                break;
+            case R.id.bill_info_cancel:
+                break;
+            case R.id.bill_info_ensure:
+                break;
+        }
 
+    }
 }

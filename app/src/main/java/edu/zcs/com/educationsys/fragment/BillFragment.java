@@ -1,6 +1,7 @@
 package edu.zcs.com.educationsys.fragment;
 
 import android.app.Fragment;
+import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
@@ -20,7 +21,9 @@ import java.util.List;
 import java.util.Map;
 
 import edu.zcs.com.educationsys.R;
+import edu.zcs.com.educationsys.activity.BillInfoActivity;
 import edu.zcs.com.educationsys.adapter.BillAdapter;
+import edu.zcs.com.educationsys.util.tools.ACache;
 import edu.zcs.com.educationsys.util.tools.HttpUtils;
 import edu.zcs.com.educationsys.util.view.EmptyView;
 import edu.zcs.com.educationsys.util.view.LoadingView;
@@ -55,6 +58,14 @@ public class BillFragment extends Fragment implements SwipeRefreshLayout.OnRefre
         loading = (LoadingView) view.findViewById(R.id.loading_view);
         init();
         myAdapter =new BillAdapter(date,getActivity());
+        myAdapter.setOnItemClickListener(new BillAdapter.OnListViewItemClickListener() {
+            @Override
+            public void onItemClick(View view, String position) {
+                Intent i=new Intent(getActivity(), BillInfoActivity.class);
+                i.putExtra("position",position);
+                startActivity(i);
+            }
+        });
         if(!HttpUtils.isNetworkAvailable(getActivity())) {
             loading.hideLoading();
         }
@@ -87,6 +98,8 @@ public class BillFragment extends Fragment implements SwipeRefreshLayout.OnRefre
                 JSONObject jsonObject = HttpUtils.getJsonObject(URL+"?aid="+"e4d4c8ff5a74670e015a7467b2360000");
                 if (jsonObject == null)
                     return;
+                ACache cache=ACache.get(getActivity());
+                cache.put("bill_list",jsonObject.getString("result"));
                 date =(List<Map<String,Object>>)JSONObject.parseObject(jsonObject.getString("result"),java.util.List.class);
                 Message message = new Message();
                 mhandler.sendMessage(message);

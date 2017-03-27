@@ -72,12 +72,13 @@ public class BillAdapter extends BaseAdapter implements View.OnClickListener{
         }else{
             holder= (ViewHolder) convertView.getTag();
         }
+        convertView.setOnClickListener(this);
         holder.bill_date.setText(list.get(position).get("time").toString().substring(5));
         holder.bill_pay.setText("￥"+list.get(position).get("pay"));
         holder.bill_title.setText(list.get(position).get("otitle").toString());
         holder.bill_static.setText(list.get(position).get("static").toString());
         holder.bill_week.setText(DateUtils.showDate(list.get(position).get("time").toString(),"yyyy-MM-dd"));
-        holder.b_id=list.get(position).get("b_id").toString();
+        holder.itemid=String.valueOf(position);
         if(list!=null&&list.size()>0){
             imageLoader.displayImage(HttpUtils.ImageHOST+list.get(position).get("head"),holder.bill_head,options);
         }
@@ -92,12 +93,12 @@ public class BillAdapter extends BaseAdapter implements View.OnClickListener{
     @Override
     public void onClick(View v) {
         if(onItemClickListener!=null){
-            onItemClickListener.onItemClick(v,((ViewHolder)v.getTag()).b_id);
+            onItemClickListener.onItemClick(v,((ViewHolder)v.getTag()).itemid);
         }
     }
 
     public static interface OnListViewItemClickListener {
-        void onItemClick(View view, String data);
+        void onItemClick(View view, String position);
     }
 
     public class ViewHolder{
@@ -107,6 +108,6 @@ public class BillAdapter extends BaseAdapter implements View.OnClickListener{
         public TextView bill_title;
         public TextView bill_static;
         public ImageView bill_head;
-        public String b_id;
+        public String itemid;
     }
 }
