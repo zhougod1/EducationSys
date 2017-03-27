@@ -1,11 +1,14 @@
 package edu.zcs.com.educationsys.activity;
 
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Message;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.alibaba.fastjson.JSONObject;
 
@@ -37,13 +40,28 @@ public class BillInfoActivity extends AppCompatActivity  implements View.OnClick
     private Button bill_info_ensure;
     private LinearLayout bill_info_controller;
     private Map<String,Object> list;
+    private ACache cache;
+    private int position;
+    private boolean result=false;
+
+    Handler mhandler=new Handler(){
+        @Override
+        public void handleMessage(Message msg) {
+            super.handleMessage(msg);
+            if(result){
+                Toast.makeText(BillInfoActivity.this,"回复成功",Toast.LENGTH_SHORT).show();
+            }else {
+                Toast.makeText(BillInfoActivity.this,"回复失败",Toast.LENGTH_SHORT).show();
+            }
+        }
+    };
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_bill_info);
 
-        int position=Integer.parseInt(getIntent().getExtras().get("position").toString());
+        position = Integer.parseInt(getIntent().getExtras().get("position").toString());
         bill_info_title =(TextView)findViewById(R.id.bill_info_title);
         bill_info_pay =(TextView)findViewById(R.id.bill_info_pay);
         bill_info_time =(TextView)findViewById(R.id.bill_info_time);
@@ -61,7 +79,7 @@ public class BillInfoActivity extends AppCompatActivity  implements View.OnClick
         bill_info_controller=(LinearLayout)findViewById(R.id.bill_info_controller);
         bill_info_cancel =(Button)findViewById(R.id.bill_info_cancel);
         bill_info_ensure=(Button)findViewById(R.id.bill_info_ensure);
-        ACache cache=ACache.get(this);
+        cache = ACache.get(this);
         list=((List<Map<String,Object>>) JSONObject.parseObject(cache.getAsString("bill_list"),java.util.List.class)).get(position);
         bill_info_title.setText(list.get("otitle").toString());
         bill_info_pay.setText("￥"+list.get("pay"));
@@ -88,10 +106,26 @@ public class BillInfoActivity extends AppCompatActivity  implements View.OnClick
             case R.id.bill_info_source:
                 break;
             case R.id.bill_info_cancel:
+                update("已拒绝");
                 break;
             case R.id.bill_info_ensure:
+                update("已同意");
                 break;
         }
 
+    }
+
+    public void update(final String ostatic){
+        new  Thread(new Runnable() {
+            @Override
+            public void run() {
+                JSONObject jsonObject=HttpUtils.getJsonObject(URL+"/update?bid="+list.get("b_id")+"&static="+ostatic);
+                if(jsonObject==null)
+                    return;
+                result=JSONObject.parseObject(jsonObject.getString("result"),java.lang.Boolean.class);
+                Message message=new Message();
+                mhandler.sendMessage(message);
+            }
+        }).start();
     }
 }
