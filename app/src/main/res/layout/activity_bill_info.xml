@@ -56,7 +56,7 @@
             android:text="测试标题"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/textView6"
+            android:id="@+id/bill_info_title"
             android:textSize="24sp"
             android:textColor="@color/button_material_dark" />
 
@@ -71,7 +71,7 @@
                 android:text="￥80.0"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:id="@+id/textView54"
+                android:id="@+id/bill_info_pay"
                 android:textSize="18sp"
                 android:layout_centerHorizontal="true" />
 
@@ -79,7 +79,7 @@
                 android:text="日结"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:id="@+id/textView53"
+                android:id="@+id/bill_info_cycle"
                 android:background="@color/my_background2"
                 android:textColor="@color/window_background"
                 android:layout_alignParentRight="true" />
@@ -88,8 +88,8 @@
                 android:text="/小时"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:id="@+id/textView51"
-                android:layout_toRightOf="@+id/textView54"
+                android:id="@+id/bill_info_time"
+                android:layout_toRightOf="@+id/bill_info_pay"
                 android:gravity="bottom"
                 android:layout_alignParentBottom="false"
                 android:layout_marginTop="5dp" />
@@ -105,7 +105,7 @@
                 android:text="待处理"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:id="@+id/textView55"
+                android:id="@+id/bill_info_static"
                 android:layout_weight="1" />
         </LinearLayout>
 
@@ -129,7 +129,7 @@
                 android:text="TextView"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:id="@+id/bill_acourse"
+                android:id="@+id/bill_info_course"
                 android:layout_weight="4"
                 android:gravity="center_horizontal" />
         </LinearLayout>
@@ -153,7 +153,7 @@
                 android:text="TextView"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:id="@+id/bill_account"
+                android:id="@+id/bill_info_name"
                 android:layout_weight="4"
                 android:gravity="center_horizontal" />
         </LinearLayout>
@@ -177,7 +177,7 @@
                 android:text="TextView"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:id="@+id/bill_aphone"
+                android:id="@+id/bill_info_phone"
                 android:layout_weight="4"
                 android:gravity="center_horizontal" />
 
@@ -202,7 +202,7 @@
                 android:text="TextView"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:id="@+id/bill_area"
+                android:id="@+id/bill_info_area"
                 android:layout_weight="4"
                 android:gravity="center_horizontal" />
         </LinearLayout>
@@ -226,7 +226,7 @@
                 android:text="TextView"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:id="@+id/bill_address"
+                android:id="@+id/bill_info_address"
                 android:layout_weight="4"
                 android:gravity="center_horizontal" />
 
@@ -270,7 +270,7 @@
                 android:text="TextView"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:id="@+id/bill_anaccount"
+                android:id="@+id/bill_info_account"
                 android:layout_weight="4"
                 android:gravity="center_horizontal" />
         </LinearLayout>
@@ -294,7 +294,7 @@
                 android:text="TextView"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:id="@+id/bill_anphone"
+                android:id="@+id/bill_info_aphone"
                 android:layout_weight="4"
                 android:gravity="center_horizontal" />
         </LinearLayout>
@@ -318,7 +318,7 @@
                 android:text="TextView"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:id="@+id/bill_message"
+                android:id="@+id/bill_info_message"
                 android:layout_weight="4"
                 android:gravity="center_horizontal" />
         </LinearLayout>
@@ -337,7 +337,7 @@
                 android:text="详情>"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:id="@+id/textView73"
+                android:id="@+id/bill_info_source"
                 android:layout_weight="7.91"
                 android:gravity="right" />
 
@@ -349,14 +349,14 @@
         android:layout_width="match_parent"
         android:layout_height="50dp"
         android:layout_alignParentBottom="true"
-        android:id="@+id/bill_controll"
+        android:id="@+id/bill_info_controller"
         android:background="@color/window_background">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:background="@color/my_background2"
             android:layout_height="1dp"
-            android:layout_alignTop="@+id/bill_controll" />
+            android:layout_alignTop="@+id/bill_info_controller" />
 
         <LinearLayout
             android:orientation="horizontal"
@@ -368,7 +368,7 @@
                 android:text="拒绝"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:id="@+id/bill_cancel"
+                android:id="@+id/bill_info_cancel"
                 android:layout_weight="1"
                 android:layout_marginLeft="10dp" />
 
@@ -376,7 +376,7 @@
                 android:text="同意"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:id="@+id/bill_ensure"
+                android:id="@+id/bill_info_ensure"
                 android:layout_weight="1"
                 android:layout_marginRight="10dp"
                 android:layout_marginLeft="5dp" />
