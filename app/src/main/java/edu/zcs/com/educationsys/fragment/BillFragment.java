@@ -43,10 +43,10 @@ public class BillFragment extends Fragment implements SwipeRefreshLayout.OnRefre
             super.handleMessage(msg);
             myAdapter.setList(date);
             myAdapter.notifyDataSetChanged();
-            loading.hideLoading();
             swipeRefreshLayout.setRefreshing(false);
         }
     };
+    private ACache cache;
 
 
     @Nullable
@@ -54,9 +54,11 @@ public class BillFragment extends Fragment implements SwipeRefreshLayout.OnRefre
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
         View view=inflater.inflate(R.layout.activity_bill_fragment, container, false);
+        cache = ACache.get(getActivity());
         empty = (EmptyView) view.findViewById(R.id.empty_view);
-        loading = (LoadingView) view.findViewById(R.id.loading_view);
-        init();
+
+        date = new ArrayList<Map<String, Object>>();
+        date=(List<Map<String,Object>>) JSONObject.parseObject(cache.getAsString("bill_list"),java.util.List.class);
         myAdapter =new BillAdapter(date,getActivity());
         myAdapter.setOnItemClickListener(new BillAdapter.OnListViewItemClickListener() {
             @Override
@@ -69,7 +71,6 @@ public class BillFragment extends Fragment implements SwipeRefreshLayout.OnRefre
         if(!HttpUtils.isNetworkAvailable(getActivity())) {
             loading.hideLoading();
         }
-        date = new ArrayList<Map<String, Object>>();
         bill_listview =(ListView)view.findViewById(R.id.bill_listview);
         bill_listview.setAdapter(myAdapter);
         bill_listview.setEmptyView(empty);
@@ -98,7 +99,6 @@ public class BillFragment extends Fragment implements SwipeRefreshLayout.OnRefre
                 JSONObject jsonObject = HttpUtils.getJsonObject(URL+"?aid="+"e4d4c8ff5a74670e015a7467b2360000");
                 if (jsonObject == null)
                     return;
-                ACache cache=ACache.get(getActivity());
                 cache.put("bill_list",jsonObject.getString("result"));
                 date =(List<Map<String,Object>>)JSONObject.parseObject(jsonObject.getString("result"),java.util.List.class);
                 Message message = new Message();
@@ -109,12 +109,18 @@ public class BillFragment extends Fragment implements SwipeRefreshLayout.OnRefre
 
     @Override
     public void onRefresh() {
-
         if (HttpUtils.isNetworkAvailable(getActivity())) {
             init();
             Toast.makeText(getActivity(), "更新成功", Toast.LENGTH_SHORT).show();
         } else {
+            swipeRefreshLayout.setRefreshing(false);
             Toast.makeText(getActivity(), "暂无网络", Toast.LENGTH_SHORT).show();
         }
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        init();
     }
 }

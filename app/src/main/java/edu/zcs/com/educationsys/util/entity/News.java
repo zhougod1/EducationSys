@@ -10,10 +10,11 @@ public class News {
 	private String n_typle;//消息类型：订单消息，还是问答消息
 	private String aid;
 	private String n_title;
-	private String n_uid;//消息来源id,订单id或是问题id等等
+	private String n_uid;
 	private String n_static;
-	private String n_sid;
+	private String n_sid;//消息来源账单
 	private String n_time;
+	private String oid;
 	
 	public String getN_id() {
 		return n_id;
@@ -46,7 +47,7 @@ public class News {
 	public String getN_sid() {
 		return n_sid;
 	}
-	public void setN_sido(String n_sid) {
+	public void setN_sid(String n_sid) {
 		this.n_sid = n_sid;
 	}
 	public String getN_time() {
@@ -57,4 +58,12 @@ public class News {
 	}
 	public String getN_title() {return n_title;}
 	public void setN_title(String n_title) {this.n_title = n_title;}
+
+	public String getOid() {
+		return oid;
+	}
+
+	public void setOid(String oid) {
+		this.oid = oid;
+	}
 }

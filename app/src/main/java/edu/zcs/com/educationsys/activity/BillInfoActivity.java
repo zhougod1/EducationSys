@@ -50,6 +50,7 @@ public class BillInfoActivity extends AppCompatActivity  implements View.OnClick
             super.handleMessage(msg);
             if(result){
                 Toast.makeText(BillInfoActivity.this,"回复成功",Toast.LENGTH_SHORT).show();
+                finish();
             }else {
                 Toast.makeText(BillInfoActivity.this,"回复失败",Toast.LENGTH_SHORT).show();
             }
@@ -95,6 +96,9 @@ public class BillInfoActivity extends AppCompatActivity  implements View.OnClick
         bill_info_message.setText(list.get("message").toString());
         bill_info_source.setOnClickListener(this);
         bill_info_controller=(LinearLayout)findViewById(R.id.bill_info_controller);
+        if(!list.get("static").toString().equals("待处理")){
+            bill_info_controller.setVisibility(View.GONE);
+        }
         bill_info_cancel.setOnClickListener(this);
         bill_info_ensure.setOnClickListener(this);
 
@@ -119,7 +123,7 @@ public class BillInfoActivity extends AppCompatActivity  implements View.OnClick
         new  Thread(new Runnable() {
             @Override
             public void run() {
-                JSONObject jsonObject=HttpUtils.getJsonObject(URL+"/update?bid="+list.get("b_id")+"&static="+ostatic);
+                JSONObject jsonObject=HttpUtils.getJsonObject(URL+"/update?b_id="+list.get("b_id")+"&static="+ostatic);
                 if(jsonObject==null)
                     return;
                 result=JSONObject.parseObject(jsonObject.getString("result"),java.lang.Boolean.class);
@@ -128,4 +132,5 @@ public class BillInfoActivity extends AppCompatActivity  implements View.OnClick
             }
         }).start();
     }
+
 }
