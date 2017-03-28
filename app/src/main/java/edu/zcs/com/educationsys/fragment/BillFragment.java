@@ -26,13 +26,11 @@ import edu.zcs.com.educationsys.adapter.BillAdapter;
 import edu.zcs.com.educationsys.util.tools.ACache;
 import edu.zcs.com.educationsys.util.tools.HttpUtils;
 import edu.zcs.com.educationsys.util.view.EmptyView;
-import edu.zcs.com.educationsys.util.view.LoadingView;
 
 public class BillFragment extends Fragment implements SwipeRefreshLayout.OnRefreshListener {
 
     protected final static String URL=HttpUtils.HOST2+"/Edu/Bill/queryByAid";
     private List<Map<String,Object>> date;
-    private LoadingView loading;
     private EmptyView empty;
     private ListView bill_listview;
     private SwipeRefreshLayout swipeRefreshLayout;
@@ -68,9 +66,6 @@ public class BillFragment extends Fragment implements SwipeRefreshLayout.OnRefre
                 startActivity(i);
             }
         });
-        if(!HttpUtils.isNetworkAvailable(getActivity())) {
-            loading.hideLoading();
-        }
         bill_listview =(ListView)view.findViewById(R.id.bill_listview);
         bill_listview.setAdapter(myAdapter);
         bill_listview.setEmptyView(empty);
