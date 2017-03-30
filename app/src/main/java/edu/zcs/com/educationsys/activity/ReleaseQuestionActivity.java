@@ -66,12 +66,15 @@ public class ReleaseQuestionActivity extends AppCompatActivity{
         submit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                upload=new UploadImage(BitmapUtils.drr,URL);
+//                Map<String,String> my=new HashMap<>();
+//                my.put("order","111");
+//                UpdateLoadUtils uploadUtil = UpdateLoadUtils.getInstance();
+//                uploadUtil.uploadFile(BitmapUtils.drr.get(0),"img",URL,my);
                 new Thread(new Runnable() {
 
                     @Override
                     public void run() {
-                        result= upload.uploadFile();
+                        result= upload.uploadFile(BitmapUtils.drr,URL);
                         Message message = new Message();
                         message.what = 2;
                         handler.sendMessage(message);

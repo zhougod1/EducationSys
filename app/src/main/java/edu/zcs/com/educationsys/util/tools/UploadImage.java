@@ -48,7 +48,7 @@ public class UploadImage {
     }*/
 
 
-    public  String uploadFile(){
+    public  String uploadFile(List<String> uploadFiles, String actionUrl){
         String end = "\r\n";
         String twoHyphens = "--";
         String boundary = "*****";
