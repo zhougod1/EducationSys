@@ -32,7 +32,6 @@ import edu.zcs.com.educationsys.adapter.GridAdapter;
 import edu.zcs.com.educationsys.util.tools.BitmapUtils;
 import edu.zcs.com.educationsys.util.tools.FileUtils;
 import edu.zcs.com.educationsys.util.tools.HttpUtils;
-import edu.zcs.com.educationsys.util.tools.UploadImage;
 
 public class ReleaseQuestionActivity extends AppCompatActivity{
 
@@ -40,7 +39,6 @@ public class ReleaseQuestionActivity extends AppCompatActivity{
     private GridView release_question_gridview;
     private GridAdapter rqApapter;
     private Button submit;
-    private UploadImage upload;
     private String result;
 
     Handler handler = new Handler() {
@@ -66,15 +64,16 @@ public class ReleaseQuestionActivity extends AppCompatActivity{
         submit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-//                Map<String,String> my=new HashMap<>();
-//                my.put("order","111");
-//                UpdateLoadUtils uploadUtil = UpdateLoadUtils.getInstance();
-//                uploadUtil.uploadFile(BitmapUtils.drr.get(0),"img",URL,my);
+
                 new Thread(new Runnable() {
 
                     @Override
                     public void run() {
-                        result= upload.uploadFile(BitmapUtils.drr,URL);
+//                Map<String,String> my=new HashMap<>();
+//                my.put("order","111");
+//                UpdateLoadUtils uploadUtil = UpdateLoadUtils.getInstance();
+//                uploadUtil.uploadFile(BitmapUtils.drr.get(0),"img",URL,my);
+                        result= HttpUtils.uploadFile(BitmapUtils.drr,URL);
                         Message message = new Message();
                         message.what = 2;
                         handler.sendMessage(message);

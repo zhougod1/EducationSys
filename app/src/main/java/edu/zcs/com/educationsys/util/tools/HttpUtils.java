@@ -255,33 +255,33 @@ public class HttpUtils {
 	}
 
 
-	public static   String uploadFile(List<String> uploadFiles, String actionUrl){
+	public static   String uploadFile(List<String> uploadFiles, String actionUrl) {
 		String end = "\r\n";
 		String twoHyphens = "--";
-		try
-		{
-			URL url =new URL(actionUrl);
-			HttpURLConnection con=(HttpURLConnection)url.openConnection();
+		DataOutputStream ds =null;
+		try {
 
-			con.setDoInput(true);
-			con.setDoOutput(true);
-			con.setUseCaches(false);
+				URL url = new URL(actionUrl);
+				HttpURLConnection con = (HttpURLConnection) url.openConnection();
 
-			con.setRequestMethod("POST");
-			con.setRequestProperty("Charset", "UTF-8");
-			con.setRequestProperty("Connection", "Keep-Alive");
-			con.setRequestProperty("user-agent", "Mozilla/4.0 (compatible; MSIE 6.0; Windows NT 5.1; SV1)");
-			con.setRequestProperty("Content-Type","multipart/form-data;boundary="+BOUNDARY);
-
-			DataOutputStream ds =
-					new DataOutputStream(con.getOutputStream());
+				con.setDoInput(true);
+				con.setDoOutput(true);
+				con.setUseCaches(false);
+			    con.setReadTimeout(10*1000);//读取超时时间
+			    con.setConnectTimeout(10*1000);//连接超时时间
+				con.setRequestMethod("POST");
+				con.setRequestProperty("Charset", "UTF-8");
+				con.setRequestProperty("Connection", "Keep-Alive");
+				con.setRequestProperty("user-agent", "Mozilla/4.0 (compatible; MSIE 6.0; Windows NT 5.1; SV1)");
+				con.setRequestProperty("Content-Type", "multipart/form-data;boundary=" + BOUNDARY);
+			    ds=new DataOutputStream(con.getOutputStream());
 			for (int i = 0; i < uploadFiles.size(); i++) {
-				String filename = uploadFiles.get(i).substring(uploadFiles.lastIndexOf("//") + 1);
+//				String filename = uploadFiles.get(i).substring(uploadFiles.lastIndexOf("//") + 1);
 				ds.writeBytes(twoHyphens + BOUNDARY + end);
 				ds.writeBytes("Content-Disposition: form-data; " +
-						"name=\"file"+i+"\";filename=\"" +
-						filename + "\"" + end);
-				ds.writeBytes("Content-Type:image/pjpeg"+end);
+						"name=\"img" + i + "\";filename=\"my" +
+						i + ".jpg\"" + end);
+				ds.writeBytes("Content-Type:image/pjpeg" + end);
 				ds.writeBytes(end);
 
 				InputStream fStream = new FileInputStream(new File(uploadFiles.get(i)));
@@ -295,32 +295,29 @@ public class HttpUtils {
 
 					ds.write(buffer, 0, length);
 				}
-				ds.writeBytes(end);
-				ds.writeBytes(twoHyphens + BOUNDARY + twoHyphens + end);
-
-
 				fStream.close();
-			}
-			ds.flush();
-
-
-			InputStream is = con.getInputStream();
-			int ch;
-			StringBuffer b =new StringBuffer();
-			while( ( ch = is.read() ) != -1 )
-			{
-				b.append( (char)ch );
+				ds.writeBytes(end);
 			}
 
-			ds.close();
 
-			return ("上传成功"+b.toString().trim());
+				ds.writeBytes(twoHyphens + BOUNDARY + twoHyphens + end);
+				ds.flush();
 
+				InputStream is = con.getInputStream();
+				int ch;
+				StringBuffer b = new StringBuffer();
+				while ((ch = is.read()) != -1) {
+					b.append((char) ch);
+				}
+
+				ds.close();
+
+				return ("上传成功");
+
+		} catch (Exception e) {
+			return ("上传失败" + e);
 		}
-		catch(Exception e)
-		{
-			return ("上传失败"+e);
-		}
+
 	}
 
 }

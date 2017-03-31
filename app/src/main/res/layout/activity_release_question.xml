@@ -1,61 +1,123 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/activity_release_question"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:paddingBottom="@dimen/activity_vertical_margin"
-    android:paddingLeft="@dimen/activity_horizontal_margin"
-    android:paddingRight="@dimen/activity_horizontal_margin"
-    android:paddingTop="@dimen/activity_vertical_margin"
-    android:orientation="vertical"
     tools:context="edu.zcs.com.educationsys.activity.ReleaseQuestionActivity"
     android:weightSum="1"
-    android:background="@color/window_background">
-
-    <EditText
+    android:background="?android:attr/windowBackground">
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:background="@color/my_background2"
+        android:layout_height="1sp"
+        android:layout_above="@+id/release_question_submit"/>
+    <LinearLayout
+        android:id="@+id/release_question_submit"
+        android:orientation="horizontal"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:inputType="textPersonName"
-        android:ems="10"
-        android:hint="请输入问题标题"
-        android:id="@+id/editText4" />
+        android:layout_alignParentBottom="true"
+        android:paddingBottom="10dp"
+        android:paddingEnd="10dp"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp"
+        android:background="@color/window_background"
+        android:paddingTop="10dp">
 
-    <Spinner
-        android:layout_width="241dp"
-        android:layout_height="40dp"
-        android:id="@+id/spinner3"
-        android:layout_marginTop="10dp" />
+        <Button
+            android:text="发送"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/question_submit"
+            android:background="@android:color/holo_red_light"
+            android:textColor="@color/window_background"
+            android:textSize="16sp"
+            android:layout_weight="1" />
+    </LinearLayout>
 
-    <EditText
+    <LinearLayout
+        android:orientation="horizontal"
         android:layout_width="match_parent"
-        android:layout_height="100dp"
-        android:inputType="textPersonName"
-        android:ems="10"
-        android:id="@+id/editText5"
-        android:background="@null"
-        android:hint="请输入你的问题内容或是提示"
-        android:layout_weight="0.55"
+        android:layout_height="55dp"
+        android:paddingLeft="@dimen/activity_horizontal_margin"
+        android:layout_below="@+id/releasw_question_content"
+        android:id="@+id/linear"
+        android:gravity="center_vertical"
         android:layout_marginTop="10dp"
-        android:gravity="top" />
+        android:background="@drawable/list_bg">
 
-    <GridView
-        android:id="@+id/release_question_gridview"
-        android:layout_width="304dp"
-        android:layout_height="262dp"
-        android:numColumns="4"
-        android:horizontalSpacing="8dp"
-        android:scrollbars="none"
-        android:verticalSpacing="8dp"
-        >
-     </GridView>
+        <TextView
+            android:text="科目类型"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/textView51"
+            android:textSize="18sp" />
 
-    <Button
-        android:text="发送"
+        <Spinner
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/spinner3"
+            android:layout_weight="1" />
+
+
+
+    </LinearLayout>
+
+    <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/question_submit"
-        android:background="@color/error_color"
-        android:textColor="@color/window_background"
-        android:textSize="16sp" />
-</LinearLayout>
+        android:layout_alignParentTop="true"
+        android:paddingBottom="@dimen/activity_vertical_margin"
+        android:paddingLeft="@dimen/activity_horizontal_margin"
+        android:paddingRight="@dimen/activity_horizontal_margin"
+        android:paddingTop="@dimen/activity_vertical_margin"
+        android:id="@+id/releasw_question_content"
+        android:background="@drawable/list_bg">
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:background="@color/my_background2"
+            android:layout_height="1sp"
+            android:layout_below="@+id/editText4" />
+
+        <GridView
+            android:id="@+id/release_question_gridview"
+            android:layout_width="362dp"
+            android:layout_height="wrap_content"
+            android:numColumns="4"
+            android:horizontalSpacing="8dp"
+            android:scrollbars="none"
+            android:layout_marginTop="10dp"
+            android:verticalSpacing="8dp"
+            android:layout_below="@+id/editText5">
+         </GridView>
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="100dp"
+            android:inputType="textMultiLine"
+            android:ems="10"
+            android:id="@+id/editText5"
+            android:background="@null"
+            android:hint="请输入你的问题内容或是提示"
+            android:gravity="top"
+            android:layout_below="@+id/editText4"
+            android:layout_marginTop="10dp" />
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:inputType="textPersonName"
+            android:ems="10"
+            android:hint="请输入问题标题"
+            android:id="@+id/editText4"
+            android:background="@null"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentStart="true" />
+
+    </RelativeLayout>
+
+</RelativeLayout>
