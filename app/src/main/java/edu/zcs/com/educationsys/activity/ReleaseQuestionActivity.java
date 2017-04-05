@@ -18,14 +18,21 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.animation.AnimationUtils;
 import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.GridView;
 import android.widget.LinearLayout;
 import android.widget.PopupWindow;
+import android.widget.Spinner;
 import android.widget.Toast;
+
+import com.alibaba.fastjson.JSONObject;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.HashMap;
+import java.util.Map;
 
 import edu.zcs.com.educationsys.R;
 import edu.zcs.com.educationsys.adapter.GridAdapter;
@@ -36,7 +43,11 @@ import edu.zcs.com.educationsys.util.tools.HttpUtils;
 public class ReleaseQuestionActivity extends AppCompatActivity{
 
     protected static final String URL = HttpUtils.HOST2+ "/Edu/Photo/upload";
+    protected static final String URL1 = HttpUtils.HOST2+ "/Edu/Question/add";
     private GridView release_question_gridview;
+    private EditText release_question_title;
+    private EditText release_question_content;
+    private Spinner release_question_course;
     private GridAdapter rqApapter;
     private Button submit;
     private String result;
@@ -51,6 +62,7 @@ public class ReleaseQuestionActivity extends AppCompatActivity{
                     break;
                 case 2:
                     Toast.makeText(ReleaseQuestionActivity.this,result,Toast.LENGTH_SHORT).show();
+                    finish();
                     break;
             }
         }
@@ -60,6 +72,11 @@ public class ReleaseQuestionActivity extends AppCompatActivity{
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_release_question);
+        release_question_title = (EditText)findViewById(R.id.release_question_title);
+        release_question_content = (EditText)findViewById(R.id.release_question_content);
+        release_question_course = (Spinner)findViewById(R.id.release_question_course);
+        release_question_course.setAdapter(new ArrayAdapter<String>(this,
+                R.layout.sprinner_textview_layout,R.id.sprinner_text,getResources().getStringArray(R.array.course)));
         submit= (Button) findViewById(R.id.question_submit);
         submit.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -69,14 +86,36 @@ public class ReleaseQuestionActivity extends AppCompatActivity{
 
                     @Override
                     public void run() {
-//                Map<String,String> my=new HashMap<>();
-//                my.put("order","111");
+                String imgname="e4d4cad75ac7e5ea015ac7eddef70001"+System.currentTimeMillis();
+                String images="";
+                result= HttpUtils.uploadFile(BitmapUtils.drr,URL,imgname);
+                        if(Boolean.parseBoolean(result)) {
+                            for (int i = 0; i < BitmapUtils.drr.size(); i++) {
+                                images += "MYQUESTIONIMG_" + imgname + i;
+                                if (i != BitmapUtils.drr.size() - 1) {
+                                    images += ";";
+                                }
+                            }
+                            Map<String, String> my = new HashMap<>();
+                            my.put("aid", "e4d4cad75ac7e5ea015ac7eddef70001");
+                            my.put("content", release_question_content.getText().toString());
+                            my.put("title", release_question_title.getText().toString());
+                            my.put("time", String.valueOf(System.currentTimeMillis()));
+                            my.put("course", release_question_course.getSelectedItem().toString());
+                            my.put("img", images);
 //                UpdateLoadUtils uploadUtil = UpdateLoadUtils.getInstance();
 //                uploadUtil.uploadFile(BitmapUtils.drr.get(0),"img",URL,my);
-                        result= HttpUtils.uploadFile(BitmapUtils.drr,URL);
-                        Message message = new Message();
-                        message.what = 2;
-                        handler.sendMessage(message);
+
+                            JSONObject jsonObject = HttpUtils.getJsonObject(URL1, my);
+                            if(jsonObject==null)
+                                return;
+                            result="发布成功";
+                            Message message = new Message();
+                            message.what = 2;
+                            handler.sendMessage(message);
+                        }else{
+                            result="发布失败";
+                        }
                     }
                 }).start();
             }

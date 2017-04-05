@@ -255,7 +255,7 @@ public class HttpUtils {
 	}
 
 
-	public static   String uploadFile(List<String> uploadFiles, String actionUrl) {
+	public static   String uploadFile(List<String> uploadFiles, String actionUrl,String imgname) {
 		String end = "\r\n";
 		String twoHyphens = "--";
 		DataOutputStream ds =null;
@@ -279,8 +279,8 @@ public class HttpUtils {
 //				String filename = uploadFiles.get(i).substring(uploadFiles.lastIndexOf("//") + 1);
 				ds.writeBytes(twoHyphens + BOUNDARY + end);
 				ds.writeBytes("Content-Disposition: form-data; " +
-						"name=\"img" + i + "\";filename=\"my" +
-						i + ".jpg\"" + end);
+						"name=\"img" + i + "\";filename=\"MYQUESTIONIMG_" +
+						imgname+i + ".jpg\"" + end);
 				ds.writeBytes("Content-Type:image/pjpeg" + end);
 				ds.writeBytes(end);
 
@@ -312,7 +312,7 @@ public class HttpUtils {
 
 				ds.close();
 
-				return ("上传成功");
+				return (b.toString().trim());
 
 		} catch (Exception e) {
 			return ("上传失败" + e);

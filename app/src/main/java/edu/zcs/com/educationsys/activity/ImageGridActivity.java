@@ -1,6 +1,5 @@
 package edu.zcs.com.educationsys.activity;
 
-import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
@@ -78,10 +77,11 @@ public class ImageGridActivity extends AppCompatActivity {
                     }
                 }
                 if (BitmapUtils.act_bool) {
-                    Intent intent = new Intent(ImageGridActivity.this,
-                            ReleaseQuestionActivity.class);
-                    startActivity(intent);
+//                    Intent intent = new Intent(ImageGridActivity.this,
+//                            ReleaseQuestionActivity.class);
+//                    startActivity(intent);
                     BitmapUtils.act_bool = false;
+                    finish();
                 }
 
                 finish();

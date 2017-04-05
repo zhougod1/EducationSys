@@ -61,7 +61,7 @@ public class QuestionAdapter extends RecyclerView.Adapter<QuestionAdapter.MyView
         holder.question_context.setText(list.get(position).get("qcontent").toString());
         holder.account_name.setText(list.get(position).get("account").toString());
         if(list!=null&&list.size()>0) {
-            imageLoader.displayImage(HttpUtils.HOST2 + "/Edu/img/" + list.get(position).get("ahead"), myHolder.account_img, options);
+            imageLoader.displayImage(HttpUtils.HOST2 + "/Edu/img/" + list.get(position).get("ahead"), holder.account_img, options);
         }
 
         path = list.get(position).get("img").toString().split(";");
