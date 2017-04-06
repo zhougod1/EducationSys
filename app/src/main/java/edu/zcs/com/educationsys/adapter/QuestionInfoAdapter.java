@@ -189,15 +189,26 @@ public class QuestionInfoAdapter extends BaseAdapter {
             switch (getItemViewType(position)) {
                 case TYPE_TITLE:
                     viewHolder_title = (ViewHolder_title) convertView.getTag();
+
                     break;
                 case TYPE_PHOTOS:
                     viewHolder_photos = (ViewHolder_photos) convertView.getTag();
+
                     break;
                 case TYPE_ANSWERS:
                     viewHolder_answers = (ViewHolder_answers) convertView.getTag();
+
                     break;
                 case TYPE_COMMENT:
+
                     viewHolder_comment = (ViewHolder_comment) convertView.getTag();
+                    int p = position - path.length - 2;
+                    if(answerdate!=null && answerdate.size()>0) {
+                        viewHolder_comment.question_comment_account.setText(answerdate.get(p).get("account").toString());
+                        viewHolder_comment.question_comment_time.setText(answerdate.get(p).get("time").toString());
+                        viewHolder_comment.question_comment_content.setText(answerdate.get(p).get("ancontent").toString());
+                        imageLoader.displayImage(HttpUtils.ImageHOST + answerdate.get(p).get("ahead").toString(), viewHolder_comment.question_comment_aimg, options);
+                    }
                     break;
                 case TYPE_NOANSWER:
                     viewHolder_noanswer = (ViewHolder_noanswer) convertView.getTag();

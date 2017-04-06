@@ -7,7 +7,8 @@ package edu.zcs.com.educationsys.util.entity;
  */
 public class News {
 	private String n_id;
-	private String n_typle;//消息类型：订单消息，还是问答消息
+	private String n_typle;
+	private String typle;//消息类型：订单消息，还是问答消息
 	private String aid;
 	private String n_title;
 	private String n_uid;
@@ -65,5 +66,14 @@ public class News {
 
 	public void setOid(String oid) {
 		this.oid = oid;
+	}
+
+
+	public String getTyple() {
+		return typle;
+	}
+
+	public void setTyple(String typle) {
+		this.typle = typle;
 	}
 }

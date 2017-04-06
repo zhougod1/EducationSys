@@ -53,12 +53,12 @@ public class NewsActivity extends AppCompatActivity {
             public void onItemClick(View view, String data) {
                 view.findViewById(R.id.point_img).setVisibility(View.GONE);
                 switch (data){
-                    case "订单助手":
+                    case "1":
                         Intent intent=new Intent(NewsActivity.this,NewsOrderActivity.class);
                         intent.putExtra("typle",data);
                         startActivity(intent);
                         break;
-                    case "问题助手":
+                    case "2":
                         break;
                 }
 

@@ -17,6 +17,7 @@ import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.PopupWindow;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.alibaba.fastjson.JSONObject;
 
@@ -61,6 +62,14 @@ public class QuestionInfoActivity extends AppCompatActivity{
                 questionInfoAdapter.notifyDataSetChanged();
                 loading.hideLoading();
                 break;
+                case 3:
+                    if((Boolean)msg.obj){
+                        initAnswer();
+                        Toast.makeText(QuestionInfoActivity.this,"回答成功",Toast.LENGTH_SHORT).show();
+                    }else{
+                        Toast.makeText(QuestionInfoActivity.this,"回答失败",Toast.LENGTH_SHORT).show();
+                    }
+                    break;
             }
 
         }
@@ -113,15 +122,21 @@ public class QuestionInfoActivity extends AppCompatActivity{
                 mhandler.sendMessage(message);
             }
         }).start();
+        initAnswer();
+    }
+
+    public void initAnswer(){
         new Thread(new Runnable() {
             @Override
             public void run() {
                 JSONObject jsonObject1 = HttpUtils.getJsonObject(URL2+"/getByQid?qid="+qid);
-                if (jsonObject1 == null)
-                    return;
-                answerdate=(List<Map<String,Object>>)JSONObject.parseObject(jsonObject1.getString("result"),java.util.ArrayList.class);
                 Message message1 = new Message();
                 message1.what=2;
+                if (jsonObject1 == null) {
+                    mhandler.sendMessage(message1);
+                    return;
+                }
+                answerdate=(List<Map<String,Object>>)JSONObject.parseObject(jsonObject1.getString("result"),java.util.ArrayList.class);
                 mhandler.sendMessage(message1);
             }
         }).start();
@@ -129,7 +144,7 @@ public class QuestionInfoActivity extends AppCompatActivity{
     @Override
     protected void onRestart() {
         super.onRestart();
-        init();
+        initAnswer();
     }
     public class PopupWindows extends PopupWindow {
         public PopupWindows(Context mContext, View parent) {
@@ -167,14 +182,14 @@ public class QuestionInfoActivity extends AppCompatActivity{
                         Map<String,String> answer=new HashMap<String, String>();
                         answer.put("qid",qid);
                         answer.put("content",content.getText().toString());
-                        answer.put("aid","e4d4c8ff5a74670e015a7467b2360000");
+                        answer.put("aid","e4d4cad75ac7e3c9015ac7e436a30000");
                         answer.put("time",new DateUtils().getDate());
-                        JSONObject jsonObject = HttpUtils.getJsonObject(URL2+"/update",answer);
+                        JSONObject jsonObject = HttpUtils.getJsonObject(URL2+"/add",answer);
                         if (jsonObject == null)
                             return;
                         Boolean result=JSONObject.parseObject(jsonObject.getString("result"),java.lang.Boolean.class);
                         Message message = new Message();
-                        message.what=2;
+                        message.what=3;
                         message.obj=result;
                         mhandler.sendMessage(message);
                     }

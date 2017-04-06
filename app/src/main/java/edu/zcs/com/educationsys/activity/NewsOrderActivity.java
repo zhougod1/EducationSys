@@ -71,7 +71,7 @@ public class NewsOrderActivity extends AppCompatActivity {
         new Thread(new Runnable() {
             @Override
             public void run() {
-                JSONObject jsonObject = HttpUtils.getJsonObject(URL+"?aid="+"e4d4c8ff5a74670e015a7467b2360000"+"&typle="+typle);
+                JSONObject jsonObject = HttpUtils.getJsonObject(URL+"?aid="+"e4d4c8ff5a74670e015a7467b2360000");
                 if (jsonObject == null)
                     return;
                 date=(List<Map<String,Object>>) JSONObject.parseObject(jsonObject.getString("news"),java.util.List.class);

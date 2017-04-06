@@ -12,6 +12,7 @@ import java.util.ArrayList;
 
 import edu.zcs.com.educationsys.R;
 import edu.zcs.com.educationsys.util.entity.News;
+import edu.zcs.com.educationsys.util.tools.TypleUtils;
 
 
 public  class NewsAdapter extends RecyclerView.Adapter<NewsAdapter.MyViewHolder> implements View.OnClickListener{
@@ -35,7 +36,7 @@ public  class NewsAdapter extends RecyclerView.Adapter<NewsAdapter.MyViewHolder>
 
     @Override
     public void onBindViewHolder(MyViewHolder holder, int position) {
-        holder.news_title.setText(list.get(position).getN_typle().toString());
+        holder.news_title.setText(TypleUtils.getNewsTyple(list.get(position).getN_typle().toString()));
         holder.news_centent_first.setText(list.get(position).getN_title().toString());
         holder.itemView.setTag(list.get(position).getN_typle().toString());
         if(list.get(position).getN_static()!=null&&!list.get(position).getN_static().equals("")){
