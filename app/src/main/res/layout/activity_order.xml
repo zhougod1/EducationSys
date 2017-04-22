@@ -15,7 +15,7 @@
         android:id="@+id/order_info_title">
 
         <TextView
-            android:text="问题详情"
+            android:text="招聘详情"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/textView17"

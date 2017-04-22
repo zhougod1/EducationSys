@@ -4,15 +4,15 @@
     <group android:checkableBehavior="single">
         <item
             android:id="@+id/personal"
-            android:icon="@drawable/ic_account_circle_black_24dp"
+            android:icon="@drawable/menu_personal_icon"
             android:title="个人中心" />
         <item
             android:id="@+id/news"
-            android:icon="@drawable/ic_announcement_black_24dp"
+            android:icon="@drawable/menu_news_icon"
             android:title="我的消息" />
         <item
             android:id="@+id/myquestion"
-            android:icon="@drawable/ic_edit_black_24dp"
+            android:icon="@drawable/menu_releasequestion_icon"
             android:title="发布问题" />
         <item
             android:id="@+id/myorder"
@@ -24,12 +24,17 @@
         <menu>
             <item
                 android:id="@+id/nav_share"
-                android:icon="@drawable/ic_menu_share"
+                android:icon="@drawable/menu_myorder_icon"
                 android:title="发布的订单" />
             <item
                 android:id="@+id/nav_send"
-                android:icon="@drawable/ic_menu_send"
+                android:icon="@drawable/menu_myquestion_icon"
                 android:title="发布的问题" />
         </menu>
     </item>
+
+    <!--<item-->
+        <!--android:id="@+id/personal2"-->
+        <!--android:icon="@drawable/menu_personal_icon"-->
+        <!--android:title="个人中心" />-->
 </menu>

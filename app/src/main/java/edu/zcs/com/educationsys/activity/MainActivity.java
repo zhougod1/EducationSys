@@ -76,6 +76,7 @@ public class MainActivity extends AppCompatActivity
         toggle.syncState();
 
         navigationView.setNavigationItemSelectedListener(this);
+        navigationView.setItemIconTintList(null);
 
     }
 
@@ -188,7 +189,7 @@ public class MainActivity extends AppCompatActivity
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.main, menu);
+        getMenuInflater().inflate(R.menu.activity_main_drawer, menu);
         return true;
     }
 
@@ -215,13 +216,13 @@ public class MainActivity extends AppCompatActivity
             Intent i=new Intent(MainActivity.this,NewsActivity.class);
             startActivity(i);
         } else if (id == R.id.myquestion) {
-            if(sp.getBoolean("ISLOGIN",false)) {
-                Intent i = new Intent(MainActivity.this, MyQuestionActivity.class);
+//            if(sp.getBoolean("ISLOGIN",false)) {
+                Intent i = new Intent(MainActivity.this, ReleaseQuestionActivity.class);
                 startActivity(i);
-            }else{
-                Intent i = new Intent(MainActivity.this, LoginActivity.class);
-                startActivity(i);
-            }
+//            }else{
+//                Intent i = new Intent(MainActivity.this, LoginActivity.class);
+//                startActivity(i);
+//            }
 
         } else if (id == R.id.myorder) {
             if(sp.getBoolean("ISLOGIN",false)) {
