@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context="edu.zcs.com.educationsys.activity.OrderActivity">
+    tools:context="edu.zcs.com.educationsys.activity.OrderInfoActivity">
     <RelativeLayout
         android:orientation="horizontal"
         android:layout_width="match_parent"

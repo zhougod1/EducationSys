@@ -44,10 +44,18 @@ public class QuestionGridAdapter extends BaseAdapter {
         if (convertView != null) {
             view = convertView;
         } else {
-            view = View.inflate(context, R.layout.question_photo_item, null);
-            ImageView myimage = (ImageView) view.findViewById(R.id.question_image);
-            if(path!=null&&path.length>0) {
-                imageLoader.displayImage(HttpUtils.HOST2+"/Edu/img/"+path[position], myimage, options);
+            if(path.length==1){
+                view = View.inflate(context, R.layout.question_photo_big_item, null);
+                ImageView myimage = (ImageView) view.findViewById(R.id.question_image);
+                if(path!=null&&path.length>0) {
+                    imageLoader.displayImage(HttpUtils.HOST2+"/Edu/img/"+path[position], myimage, options);
+                }
+            }else{
+                view = View.inflate(context, R.layout.question_photo_item, null);
+                ImageView myimage = (ImageView) view.findViewById(R.id.question_image);
+                if(path!=null&&path.length>0) {
+                    imageLoader.displayImage(HttpUtils.HOST2+"/Edu/img/"+path[position], myimage, options);
+                }
             }
         }
         return view;

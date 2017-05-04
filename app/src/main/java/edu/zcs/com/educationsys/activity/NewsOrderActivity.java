@@ -50,7 +50,7 @@ public class NewsOrderActivity extends AppCompatActivity {
             @Override
             public void onItemClick(View view, String data) {
 //                view.findViewById(R.id.point_img).setVisibility(View.GONE);
-                Intent intent=new Intent(NewsOrderActivity.this,OrderActivity.class);
+                Intent intent=new Intent(NewsOrderActivity.this,OrderInfoActivity.class);
                 intent.putExtra("oid",data);
                 startActivity(intent);
             }

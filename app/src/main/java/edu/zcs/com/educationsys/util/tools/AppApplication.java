@@ -18,15 +18,12 @@ import java.io.File;
  * 继承Application,在AndroidManifest.xml声明后，实现其他Activity可以共享这个类
  */
 public class AppApplication extends Application {
-
-
 	@Override
 	public void onCreate() {
 		// TODO Auto-generated method stub
 		super.onCreate();
 		initImageLoader(getApplicationContext());
 	}
-
 	@Override
 	public void onTerminate() {
 		// TODO Auto-generated method stub

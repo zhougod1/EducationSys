@@ -73,7 +73,7 @@ public class RecyclerviewActivity extends AppCompatActivity implements SwipeRefr
         myAdapter.setOnItemClickListener(new OrderAdapter.OnRecyclerViewItemClickListener() {
             @Override
             public void onItemClick(View view, String data) {
-                Intent intent=new Intent(RecyclerviewActivity.this,OrderActivity.class);
+                Intent intent=new Intent(RecyclerviewActivity.this,OrderInfoActivity.class);
                 intent.putExtra("oid",data);
                 startActivity(intent);
             }

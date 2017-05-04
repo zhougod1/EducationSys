@@ -70,7 +70,7 @@ public class HttpUtils {
 		}
 	}
  
-	public static JSONObject getJsonObject(String Url) {
+	public static com.alibaba.fastjson.JSONObject getJsonObject(String Url) {
 
 		DefaultHttpClient httpClient = null;
 		try {

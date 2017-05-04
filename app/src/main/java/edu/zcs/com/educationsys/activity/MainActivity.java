@@ -29,7 +29,7 @@ import java.util.Map;
 
 import edu.zcs.com.educationsys.R;
 import edu.zcs.com.educationsys.fragment.BillFragment;
-import edu.zcs.com.educationsys.fragment.OrderFragment;
+import edu.zcs.com.educationsys.fragment.HomeFragment;
 import edu.zcs.com.educationsys.fragment.QuestionFragment;
 import edu.zcs.com.educationsys.util.tools.ACache;
 import edu.zcs.com.educationsys.util.tools.HttpUtils;
@@ -42,8 +42,8 @@ public class MainActivity extends AppCompatActivity
     private DrawerLayout drawer;
     private NavigationView navigationView;
     private FragmentManager myfragmentManager;
-    private BillFragment home;
-    private OrderFragment order;
+    private BillFragment bill;
+    private HomeFragment home;
     private QuestionFragment question;
     private ImageView img1, img2, img3;
     private TextView text_1, text_2, text_3;
@@ -114,8 +114,8 @@ public class MainActivity extends AppCompatActivity
                 text_1.setTextColor(Color.rgb(65, 186, 255));
                 if (home == null) {
                     // 如果ContactsFragment为空，则创建一个并添加到界面上
-                    home = new BillFragment();
-                    transaction.add(R.id.fragment,home);
+                    home = new HomeFragment();
+                    transaction.add(R.id.fragment, home);
                 } else {
                     // 如果ContactsFragment不为空，则直接将它显示出来
                     transaction.show(home);
@@ -138,13 +138,13 @@ public class MainActivity extends AppCompatActivity
                 img3.setImageResource(R.drawable.p99_1);
                 text_3.setTextColor(Color.rgb(65, 186, 255));
                 // 改变控件的图片和文字颜色
-                if (order == null) {
+                if (bill == null) {
                     // 如果ContactsFragment为空，则创建一个并添加到界面上
-                    order = new OrderFragment();
-                    transaction.add(R.id.fragment, order);
+                    bill = new BillFragment();
+                    transaction.add(R.id.fragment,bill);
                 } else {
                     // 如果ContactsFragment不为空，则直接将它显示出来
-                    transaction.show(order);
+                    transaction.show(bill);
                 }
                 break;
             default:
@@ -163,14 +163,14 @@ public class MainActivity extends AppCompatActivity
     }
 
     private void hideFragments(FragmentTransaction transaction) {
-        if (home != null) {
-            transaction.hide(home);
+        if (bill != null) {
+            transaction.hide(bill);
         }
         if (question!= null) {
             transaction.hide(question);
         }
-        if (order!= null) {
-            transaction.hide(order);
+        if (home!= null) {
+            transaction.hide(home);
         }
 
     }

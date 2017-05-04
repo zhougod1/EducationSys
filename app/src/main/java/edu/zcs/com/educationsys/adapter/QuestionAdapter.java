@@ -6,7 +6,6 @@ import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.GridView;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -19,6 +18,7 @@ import java.util.Map;
 import edu.zcs.com.educationsys.R;
 import edu.zcs.com.educationsys.util.tools.HttpUtils;
 import edu.zcs.com.educationsys.util.tools.Options;
+import edu.zcs.com.educationsys.util.view.MyGridView;
 
 
 public class QuestionAdapter extends RecyclerView.Adapter<QuestionAdapter.MyViewHolder> implements View.OnClickListener {
@@ -49,15 +49,12 @@ public class QuestionAdapter extends RecyclerView.Adapter<QuestionAdapter.MyView
     @Override
     public MyViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View view= LayoutInflater.from(context).inflate(R.layout.question_cardview_item,parent,false);
-        MyViewHolder vh=new MyViewHolder(view);
         view.setOnClickListener(this);
-        return vh;
+        return new MyViewHolder(view);
     }
 
     @Override
     public void onBindViewHolder(MyViewHolder holder,final int position) {
-
-        myHolder = holder;
         holder.question_context.setText(list.get(position).get("qcontent").toString());
         holder.account_name.setText(list.get(position).get("account").toString());
         if(list!=null&&list.size()>0) {
@@ -65,12 +62,9 @@ public class QuestionAdapter extends RecyclerView.Adapter<QuestionAdapter.MyView
         }
 
         path = list.get(position).get("img").toString().split(";");
-        if(path.length>1) {
-            myadapter = new QuestionGridAdapter(context,path);
-            holder.question_photos.setAdapter(myadapter);
-        }else if(path.length==1){
-            imageLoader.displayImage(HttpUtils.HOST2 + "/Edu/img/"+ path[0],holder.question_photo,options);
-        }
+        myadapter = new QuestionGridAdapter(context,path);
+        holder.question_photos.setAdapter(myadapter);
+
         holder.question_time.setText(list.get(position).get("time").toString());
         holder.question_title.setText(list.get(position).get("qtitle").toString());
         holder.question_course.setText("["+list.get(position).get("course")+"]");
@@ -101,7 +95,7 @@ public class QuestionAdapter extends RecyclerView.Adapter<QuestionAdapter.MyView
     class MyViewHolder extends  RecyclerView.ViewHolder{
         private TextView question_title,account_name,question_time,question_context,question_info,question_course;
         private ImageView account_img,question_photo;
-        private GridView question_photos;
+        private MyGridView question_photos;
         MyViewHolder(View itemView) {
             super(itemView);
              question_time=(TextView)itemView.findViewById(R.id.question_time);
@@ -114,8 +108,7 @@ public class QuestionAdapter extends RecyclerView.Adapter<QuestionAdapter.MyView
              question_course=(TextView)itemView.findViewById(R.id.question_course);
              account_name=(TextView)itemView.findViewById(R.id.account_name);
              account_img= (ImageView) itemView.findViewById(R.id.account_img);
-             question_photo= (ImageView) itemView.findViewById(R.id.question_photo);
-             question_photos= (GridView) itemView.findViewById(R.id.question_photos);
+             question_photos= (MyGridView) itemView.findViewById(R.id.question_photos);
 
         }
 

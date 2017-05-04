@@ -17,49 +17,101 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
-            <edu.zcs.com.educationsys.util.view.CircleImageView
+            <LinearLayout
+                android:orientation="vertical"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:src="@drawable/chinese"
-                android:layout_columnWeight="1"
-                android:id="@+id/Chinese_bt"
                 android:layout_weight="1"
-                android:layout_marginRight="20dp" />
-
-            <edu.zcs.com.educationsys.util.view.CircleImageView
+                android:layout_marginRight="30dp">
+                <edu.zcs.com.educationsys.util.view.CircleImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/chinese"
+                    android:layout_columnWeight="1"
+                    android:id="@+id/chinese_bt"
+                    android:layout_weight="1" />
+                <TextView
+                    android:text="语文"
+                    android:gravity="center_horizontal"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
+            </LinearLayout>
+            <LinearLayout
+                android:orientation="vertical"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_columnWeight="1"
-                android:src="@drawable/math"
+                android:layout_weight="1"
                 android:id="@+id/math_bt"
-                android:layout_weight="1"
-                android:layout_marginRight="20dp" />
-
-            <edu.zcs.com.educationsys.util.view.CircleImageView
+                android:layout_marginRight="30dp">
+                <edu.zcs.com.educationsys.util.view.CircleImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_columnWeight="1"
+                    android:src="@drawable/math"
+                    android:layout_weight="1" />
+                <TextView
+                    android:text="数学"
+                    android:gravity="center_horizontal"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
+            </LinearLayout>
+            <LinearLayout
+                android:orientation="vertical"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_columnWeight="1"
-                android:src="@drawable/english"
+                android:layout_weight="1"
                 android:id="@+id/english_bt"
-                android:layout_weight="1"
-                android:layout_marginRight="20dp" />
-
-            <edu.zcs.com.educationsys.util.view.CircleImageView
+                android:layout_marginRight="30dp">
+                <edu.zcs.com.educationsys.util.view.CircleImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_columnWeight="1"
+                    android:src="@drawable/english"
+                    android:layout_weight="1"/>
+                <TextView
+                    android:text="英语"
+                    android:gravity="center_horizontal"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
+            </LinearLayout>
+            <LinearLayout
+                android:orientation="vertical"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_columnWeight="1"
-                android:src="@drawable/physics"
+                android:layout_weight="1"
                 android:id="@+id/physics_bt"
-                android:layout_weight="1"
-                android:layout_marginRight="20dp" />
-
-            <edu.zcs.com.educationsys.util.view.CircleImageView
+                android:layout_marginRight="30dp">
+                <edu.zcs.com.educationsys.util.view.CircleImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_columnWeight="1"
+                    android:src="@drawable/physics"
+                    android:layout_weight="1" />
+                <TextView
+                    android:text="物理"
+                    android:gravity="center_horizontal"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
+            </LinearLayout>
+            <LinearLayout
+                android:orientation="vertical"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_columnWeight="1"
-                android:src="@drawable/biology"
                 android:id="@+id/biology_bt"
-                android:layout_weight="1" />
+                android:layout_weight="1">
+                <edu.zcs.com.educationsys.util.view.CircleImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_columnWeight="1"
+                    android:src="@drawable/biology"
+
+                    android:layout_weight="1" />
+                <TextView
+                    android:text="生物"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_horizontal" />
+            </LinearLayout>
         </LinearLayout>
 
         <LinearLayout
@@ -68,50 +120,100 @@
             android:layout_height="match_parent"
             android:layout_marginTop="10dp">
 
-            <edu.zcs.com.educationsys.util.view.CircleImageView
+            <LinearLayout
+                android:orientation="vertical"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_columnWeight="1"
-                android:src="@drawable/chemistry"
+                android:layout_marginRight="30dp"
                 android:id="@+id/chemistry_bt"
-                android:layout_weight="1"
-                android:layout_marginRight="20dp" />
-
-            <edu.zcs.com.educationsys.util.view.CircleImageView
+                android:layout_weight="1">
+                <edu.zcs.com.educationsys.util.view.CircleImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_columnWeight="1"
+                    android:src="@drawable/chemistry"
+                    android:layout_weight="1"/>
+                <TextView
+                    android:text="化学"
+                    android:gravity="center_horizontal"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"/>
+            </LinearLayout>
+            <LinearLayout
+                android:orientation="vertical"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_columnWeight="1"
-                android:src="@drawable/history"
+                android:layout_marginRight="30dp"
                 android:id="@+id/history_bt"
-                android:layout_weight="1"
-                android:layout_marginRight="20dp" />
-
-            <edu.zcs.com.educationsys.util.view.CircleImageView
+                android:layout_weight="1">
+                <edu.zcs.com.educationsys.util.view.CircleImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_columnWeight="1"
+                    android:src="@drawable/history"
+                    android:layout_weight="1" />
+                <TextView
+                    android:text="历史"
+                    android:gravity="center_horizontal"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"/>
+            </LinearLayout>
+            <LinearLayout
+                android:orientation="vertical"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_columnWeight="1"
-                android:src="@drawable/geography"
+                android:layout_marginRight="30dp"
                 android:id="@+id/geography_bt"
-                android:layout_weight="1"
-                android:layout_marginRight="20dp" />
-
-            <edu.zcs.com.educationsys.util.view.CircleImageView
+                android:layout_weight="1">
+                <edu.zcs.com.educationsys.util.view.CircleImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_columnWeight="1"
+                    android:src="@drawable/geography"
+                    android:layout_weight="1"/>
+                <TextView
+                    android:text="地理"
+                    android:gravity="center_horizontal"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"/>
+            </LinearLayout>
+            <LinearLayout
+                android:orientation="vertical"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_columnWeight="1"
-                android:src="@drawable/politics"
+                android:layout_marginRight="30dp"
                 android:id="@+id/politics_bt"
-                android:layout_rowSpan="10"
-                android:layout_weight="1"
-                android:layout_marginRight="20dp" />
-
-            <edu.zcs.com.educationsys.util.view.CircleImageView
+                android:layout_weight="1">
+                <edu.zcs.com.educationsys.util.view.CircleImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_columnWeight="1"
+                    android:src="@drawable/politics"
+                    android:layout_weight="1"/>
+                <TextView
+                    android:text="政治"
+                    android:gravity="center_horizontal"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"/>
+            </LinearLayout>
+            <LinearLayout
+                android:orientation="vertical"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_columnWeight="1"
-                android:src="@drawable/chemistry"
                 android:id="@+id/imageView10"
-                android:layout_weight="1" />
+                android:layout_weight="1">
+                <edu.zcs.com.educationsys.util.view.CircleImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_columnWeight="1"
+                    android:src="@drawable/chemistry"
+                    android:layout_weight="1" />
+                <TextView
+                    android:text="全部"
+                    android:gravity="center_horizontal"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"/>
+            </LinearLayout>
         </LinearLayout>
     </LinearLayout>
 

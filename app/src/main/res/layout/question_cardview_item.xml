@@ -14,10 +14,9 @@
         android:orientation="vertical"
     >
 
-     <LinearLayout
-         android:orientation="vertical"
+     <RelativeLayout
          android:layout_width="match_parent"
-         android:layout_height="match_parent"
+         android:layout_height="wrap_content"
          android:paddingLeft="8dp"
          android:paddingTop="8dp"
          android:paddingRight="8dp"
@@ -29,7 +28,9 @@
              android:orientation="horizontal"
              android:layout_width="match_parent"
              android:layout_height="wrap_content"
-             android:gravity="center_vertical">
+             android:gravity="center_vertical"
+             android:layout_alignParentTop="true"
+             android:id="@+id/question_top">
 
              <edu.zcs.com.educationsys.util.view.CircleImageView
                  android:layout_width="40dp"
@@ -68,7 +69,9 @@
          <LinearLayout
              android:orientation="horizontal"
              android:layout_width="match_parent"
-             android:layout_height="match_parent">
+             android:layout_height="wrap_content"
+             android:layout_below="@+id/question_top"
+             android:id="@+id/question_second">
 
              <TextView
                  android:text="[数学]"
@@ -91,23 +94,19 @@
          <LinearLayout
              android:orientation="vertical"
              android:layout_width="match_parent"
-             android:layout_height="match_parent"
+             android:layout_height="wrap_content"
              android:layout_marginTop="8dp"
-             android:layout_marginBottom="8dp">
+             android:layout_marginBottom="8dp"
+             android:layout_below="@+id/question_second"
+             android:id="@+id/question_threed">
 
 
-             <ImageView
-                 android:layout_width="160dp"
+             <edu.zcs.com.educationsys.util.view.MyGridView
+                 android:layout_width="wrap_content"
                  android:layout_height="wrap_content"
-                 android:id="@+id/question_photo"
-                 android:layout_marginLeft="40dp" />
-
-             <GridView
-                 android:layout_width="256dp"
-                 android:layout_height="wrap_content"
-                 android:numColumns="3"
                  android:layout_marginLeft="40dp"
                  android:horizontalSpacing="8dp"
+                 android:numColumns="3"
                  android:scrollbars="none"
                  android:verticalSpacing="8dp"
                  android:id="@+id/question_photos"/>
@@ -123,13 +122,16 @@
              android:layout_marginLeft="40dp"
              android:textSize="17sp"
              android:id="@+id/question_context"
-             android:textAppearance="@style/TextAppearance.AppCompat" />
+             android:textAppearance="@style/TextAppearance.AppCompat"
+             android:layout_below="@+id/question_threed" />
 
          <LinearLayout
              android:orientation="horizontal"
              android:layout_width="match_parent"
              android:background="@color/my_background2"
-             android:layout_height="1sp">
+             android:layout_height="1sp"
+             android:layout_below="@+id/question_context"
+             android:id="@+id/question_line">
 
          </LinearLayout>
 
@@ -137,7 +139,8 @@
              android:orientation="horizontal"
              android:layout_width="match_parent"
              android:layout_marginTop="5dp"
-             android:layout_height="match_parent">
+             android:layout_height="match_parent"
+             android:layout_below="@+id/question_line">
 
              <TextView
                  android:text="浏览11次 • 13 条回答"
@@ -148,7 +151,7 @@
 
          </LinearLayout>
 
-     </LinearLayout>
+     </RelativeLayout>
 
  </android.support.v7.widget.CardView>
 

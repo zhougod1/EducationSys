@@ -105,7 +105,7 @@ public class MyOrderActivity extends AppCompatActivity implements SwipeRefreshLa
             myAdapter.setOnItemClickListener(new OrderAdapter.OnRecyclerViewItemClickListener() {
                 @Override
                 public void onItemClick(View view, String data) {
-                    Intent intent=new Intent(MyOrderActivity.this,OrderActivity.class);
+                    Intent intent=new Intent(MyOrderActivity.this,OrderInfoActivity.class);
                     intent.putExtra("oid",data);
                     startActivity(intent);
                 }

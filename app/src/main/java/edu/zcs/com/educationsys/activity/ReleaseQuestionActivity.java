@@ -91,7 +91,7 @@ public class ReleaseQuestionActivity extends AppCompatActivity{
                 result= HttpUtils.uploadFile(BitmapUtils.drr,URL,imgname);
                         if(Boolean.parseBoolean(result)) {
                             for (int i = 0; i < BitmapUtils.drr.size(); i++) {
-                                images += "MYQUESTIONIMG_" + imgname + i;
+                                images += "MYQUESTIONIMG_" + imgname + i+".jpg";
                                 if (i != BitmapUtils.drr.size() - 1) {
                                     images += ";";
                                 }
