@@ -5,11 +5,12 @@
     <color name="colorAccent">#FF4081</color>
     <color name="window_background">#ffffff</color>
     <color name="my_background">#f15d1e</color>
-    <color name="my_background2">#D7D2D7</color>
+    <color name="my_background2">#d7d2d7</color>
     <color name="my_background3">#f4f0ec</color>
     <color name="my_background4">#2ecb71</color>
     <color name="my_color_red">#ff0008</color>
     <color name="my_color_black">#000000</color>
     <color name="my_background5">#faf0f0f0</color>
+    <color name="error_color">#ff0000</color>
 
 </resources>

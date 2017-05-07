@@ -45,7 +45,6 @@ public class NewsActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_news);
-
         date =new ArrayList<News>();
         myAdapter =new NewsAdapter(this,date);
         myAdapter.setOnItemClickListener(new NewsAdapter.OnRecyclerViewItemClickListener() {

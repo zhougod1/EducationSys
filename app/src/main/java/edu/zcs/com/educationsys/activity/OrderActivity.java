@@ -52,7 +52,7 @@ public class OrderActivity extends AppCompatActivity implements SwipeRefreshLayo
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_order_fragment);
+        setContentView(R.layout.activity_order);
         empty = (EmptyView)findViewById(R.id.empty_view);
         loading = (LoadingView)findViewById(R.id.loading_view);
         empty.setOnClickListener(new View.OnClickListener() {

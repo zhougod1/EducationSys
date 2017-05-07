@@ -79,7 +79,7 @@ public class OrderInfoActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_order);
+        setContentView(R.layout.activity_order_info);
         sp = this.getSharedPreferences("account", Context.MODE_WORLD_READABLE);
         oid=getIntent().getStringExtra("oid");
 //        order = new ArrayList<Order>();

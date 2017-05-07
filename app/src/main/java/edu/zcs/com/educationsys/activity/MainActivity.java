@@ -215,7 +215,7 @@ public class MainActivity extends AppCompatActivity
         } else if (id == R.id.news) {
             Intent i=new Intent(MainActivity.this,NewsActivity.class);
             startActivity(i);
-        } else if (id == R.id.myquestion) {
+        } else if (id == R.id.release_question) {
 //            if(sp.getBoolean("ISLOGIN",false)) {
                 Intent i = new Intent(MainActivity.this, ReleaseQuestionActivity.class);
                 startActivity(i);
@@ -224,18 +224,18 @@ public class MainActivity extends AppCompatActivity
 //                startActivity(i);
 //            }
 
+        } else if (id == R.id.release_order) {
+//            if(sp.getBoolean("ISLOGIN",false)) {
+//                Intent i = new Intent(MainActivity.this, MyOrderActivity.class);
+//                startActivity(i);
+//            }else{
+                Intent i = new Intent(MainActivity.this, ReleaseActivity.class);
+                startActivity(i);
+//            }
+
         } else if (id == R.id.myorder) {
-            if(sp.getBoolean("ISLOGIN",false)) {
-                Intent i = new Intent(MainActivity.this, MyOrderActivity.class);
-                startActivity(i);
-            }else{
-                Intent i = new Intent(MainActivity.this, LoginActivity.class);
-                startActivity(i);
-            }
 
-        } else if (id == R.id.nav_share) {
-
-        } else if (id == R.id.nav_send) {
+        } else if (id == R.id.myquestion) {
 
         }
 

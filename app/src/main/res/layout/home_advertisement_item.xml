@@ -2,20 +2,25 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
-    <LinearLayout
-        android:orientation="horizontal"
+    <com.youth.banner.Banner
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/banner"
         android:layout_width="match_parent"
-        android:layout_height="130dp"
-        android:gravity="center_vertical|center_horizontal"
-        android:weightSum="1"
-        android:background="@color/button_material_light">
+        android:layout_height="130dp" />
+    <!--<LinearLayout-->
+        <!--android:orientation="horizontal"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="130dp"-->
+        <!--android:gravity="center_vertical|center_horizontal"-->
+        <!--android:weightSum="1"-->
+        <!--android:background="@color/button_material_light">-->
 
-        <TextView
-            android:text="广告区域"
-            android:layout_width="48dp"
-            android:layout_height="wrap_content"
-            android:id="@+id/textView16"
-            android:layout_weight="0.08" />
-    </LinearLayout>
+        <!--<TextView-->
+            <!--android:text="广告区域"-->
+            <!--android:layout_width="48dp"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:id="@+id/textView16"-->
+            <!--android:layout_weight="0.08" />-->
+    <!--</LinearLayout>-->
 
 </LinearLayout>

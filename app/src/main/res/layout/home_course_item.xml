@@ -22,13 +22,14 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
+                android:id="@+id/chinese_bt"
                 android:layout_marginRight="30dp">
                 <edu.zcs.com.educationsys.util.view.CircleImageView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:src="@drawable/chinese"
                     android:layout_columnWeight="1"
-                    android:id="@+id/chinese_bt"
+
                     android:layout_weight="1" />
                 <TextView
                     android:text="语文"
@@ -200,7 +201,7 @@
                 android:orientation="vertical"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:id="@+id/imageView10"
+                android:id="@+id/all_bt"
                 android:layout_weight="1">
                 <edu.zcs.com.educationsys.util.view.CircleImageView
                     android:layout_width="wrap_content"

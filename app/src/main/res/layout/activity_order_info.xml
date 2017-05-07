@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_order"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="edu.zcs.com.educationsys.activity.OrderInfoActivity">
+    <RelativeLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="?attr/colorPrimary"
+        android:gravity="center_vertical"
+        android:id="@+id/order_info_title">
+
+        <TextView
+            android:text="招聘详情"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/textView17"
+            android:layout_weight="0.04"
+            android:layout_centerHorizontal="true"
+            android:textColor="@color/window_background"
+            android:textSize="18sp"
+            android:layout_centerVertical="true"
+            tools:textStyle="normal" />
+
+        <TextView
+            android:text="返回"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:id="@+id/back"
+            android:layout_weight="0.04"
+            android:gravity="center"
+            android:textColor="@color/window_background"
+            android:textSize="16sp"
+            android:paddingRight="20dp"
+            android:paddingLeft="20dp"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentStart="true" />
+    </RelativeLayout>
+
+    <TextView
+        android:text="马上兼职"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:id="@+id/order_release"
+        android:gravity="center"
+        android:textColor="@color/window_background"
+        android:textSize="20dp"
+        android:layout_alignParentBottom="true"
+        android:background="@color/my_background" />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/order_info_title"
+        android:layout_alignParentStart="true"
+        android:layout_above="@+id/order_release">
+        <include
+            layout="@layout/order_context"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"/>
+
+    </ScrollView>
+
+</RelativeLayout>

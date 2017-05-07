@@ -1,6 +1,7 @@
 package edu.zcs.com.educationsys.fragment;
 
 import android.app.Fragment;
+import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
@@ -17,23 +18,33 @@ import com.alibaba.fastjson.JSONObject;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
 
 import edu.zcs.com.educationsys.R;
+import edu.zcs.com.educationsys.activity.OrderInfoActivity;
 import edu.zcs.com.educationsys.adapter.HomeAdapter;
+import edu.zcs.com.educationsys.util.entity.Order;
 import edu.zcs.com.educationsys.util.tools.HttpUtils;
+import edu.zcs.com.educationsys.util.tools.OrderArray;
+import edu.zcs.com.educationsys.util.view.EmptyView;
+import edu.zcs.com.educationsys.util.view.LoadingView;
 
 public class HomeFragment extends Fragment implements SwipeRefreshLayout.OnRefreshListener{
 
-    protected final static String URL=HttpUtils.HOST2;
+    protected static final String URL = HttpUtils.HOST2 + "/Edu/Order/queryAll";
     private ListView home_listview;
-    private List<Map<String, Object>> list;
+    private List<Order> list;
+    private EmptyView empty;
+    private LoadingView loading;
     private HomeAdapter home_adapter;
 
     Handler mhandler=new Handler(){
         @Override
         public void handleMessage(Message msg) {
             super.handleMessage(msg);
+            home_adapter.setList(list);
+            home_adapter.notifyDataSetChanged();
+            loading.hideLoading();
+            swipeRefreshLayout.setRefreshing(false);
         }
     };
     private SwipeRefreshLayout swipeRefreshLayout;
@@ -42,11 +53,16 @@ public class HomeFragment extends Fragment implements SwipeRefreshLayout.OnRefre
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view=inflater.inflate(R.layout.activity_home_fragment,container,false);
-        list=new ArrayList<Map<String, Object>>();
+        empty = (EmptyView)view.findViewById(R.id.empty_view);
+        loading = (LoadingView)view.findViewById(R.id.loading_view);
+        list=new ArrayList<Order>();
         home_listview =(ListView)view.findViewById(R.id.home_listview);
         home_adapter =new HomeAdapter(getActivity(), list);
         home_listview.setAdapter(home_adapter);
-
+        if (!HttpUtils.isNetworkAvailable(getActivity())) {
+            loading.hideLoading();
+        }
+        home_listview.setEmptyView(empty);
         swipeRefreshLayout = (SwipeRefreshLayout) view.findViewById(R.id.home_swipe_container);
         home_listview.setOnScrollListener(new AbsListView.OnScrollListener() {
             @Override
@@ -61,6 +77,15 @@ public class HomeFragment extends Fragment implements SwipeRefreshLayout.OnRefre
         });
         swipeRefreshLayout.setColorSchemeResources(R.color.colorPrimary);
         swipeRefreshLayout.setOnRefreshListener(this);
+        home_adapter.setOnItemClickListener(new HomeAdapter.OnListViewItemClickListener() {
+            @Override
+            public void onItemClick(View view, String data) {
+                Intent intent = new Intent(getActivity(), OrderInfoActivity.class);
+                intent.putExtra("oid", data);
+                startActivity(intent);
+            }
+        });
+        init();
         return view;
     }
 
@@ -68,11 +93,11 @@ public class HomeFragment extends Fragment implements SwipeRefreshLayout.OnRefre
         new Thread(new Runnable() {
             @Override
             public void run() {
-                JSONObject jsonObject = HttpUtils.getJsonObject(URL+"?aid="+"e4d4c8ff5a74670e015a7467b2360000");
+                JSONObject jsonObject = HttpUtils.getJsonObject(URL);
                 if (jsonObject == null)
                     return;
-//                cache.put("bill_list",jsonObject.getString("result"));result
-                list =(List<Map<String,Object>>)JSONObject.parseObject(jsonObject.getString("result"),java.util.List.class);
+                list = JSONObject.parseObject(jsonObject.getString("order"), OrderArray.class);
+
                 Message message = new Message();
                 mhandler.sendMessage(message);
             }

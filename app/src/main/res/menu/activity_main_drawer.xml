@@ -11,23 +11,23 @@
             android:icon="@drawable/menu_news_icon"
             android:title="我的消息" />
         <item
-            android:id="@+id/myquestion"
+            android:id="@+id/release_question"
             android:icon="@drawable/menu_releasequestion_icon"
             android:title="发布问题" />
         <item
-            android:id="@+id/myorder"
+            android:id="@+id/release_order"
             android:icon="@drawable/menu_releaseorder_icon"
-            android:title="发布订单" />
+            android:title="发布招聘" />
     </group>
 
     <item android:title="我的">
         <menu>
             <item
-                android:id="@+id/nav_share"
+                android:id="@+id/myorder"
                 android:icon="@drawable/menu_myorder_icon"
-                android:title="发布的订单" />
+                android:title="发布的招聘" />
             <item
-                android:id="@+id/nav_send"
+                android:id="@+id/myquestion"
                 android:icon="@drawable/menu_myquestion_icon"
                 android:title="发布的问题" />
         </menu>

@@ -10,5 +10,19 @@
         <item>历史</item>
         <item>地理</item>
     </string-array>
-
+    <string-array name="level">
+        <item>高中</item>
+        <item>初中</item>
+        <item>小学</item>
+    </string-array>
+    <string-array name="cycle">
+        <item>日结</item>
+        <item>月结</item>
+        <item>季结</item>
+    </string-array>
+    <string-array name="date">
+        <item>小时</item>
+        <item>日</item>
+        <item>月</item>
+    </string-array>
 </resources>

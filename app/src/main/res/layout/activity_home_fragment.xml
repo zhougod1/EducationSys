@@ -7,19 +7,24 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="edu.zcs.com.educationsys.fragment.HomeFragment">
-    <LinearLayout
+    <FrameLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical"
-        android:background="@color/button_material_light">
-
+        android:layout_height="match_parent">
         <ListView
             android:id="@+id/home_listview"
             android:divider="@null"
             android:layout_width="match_parent"
             android:layout_height="match_parent" />
-    </LinearLayout>
+        <include
+            android:id="@+id/empty_view"
+            layout="@layout/empty_view"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
 
-
-
+        <include
+            android:id="@+id/loading_view"
+            layout="@layout/loading_view"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+    </FrameLayout>
 </android.support.v4.widget.SwipeRefreshLayout>
