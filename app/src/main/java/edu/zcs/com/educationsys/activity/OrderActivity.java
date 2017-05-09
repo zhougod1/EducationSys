@@ -20,6 +20,7 @@ import java.util.ArrayList;
 import edu.zcs.com.educationsys.R;
 import edu.zcs.com.educationsys.adapter.OrderAdapter;
 import edu.zcs.com.educationsys.util.entity.Order;
+import edu.zcs.com.educationsys.util.tools.CourseUtils;
 import edu.zcs.com.educationsys.util.tools.HttpUtils;
 import edu.zcs.com.educationsys.util.tools.OrderArray;
 import edu.zcs.com.educationsys.util.view.EmptyView;
@@ -28,13 +29,14 @@ import edu.zcs.com.educationsys.util.view.RecyclerViewEmptySupport;
 
 public class OrderActivity extends AppCompatActivity implements SwipeRefreshLayout.OnRefreshListener {
 
-    protected static final String URL = HttpUtils.HOST2 + "/Edu/Order/queryAll";
+    protected static final String URL = HttpUtils.HOST2 + "/Edu/Order/queryOrder";
     private EmptyView empty;
     private LoadingView loading;
     private RecyclerViewEmptySupport recyclerView;
     private OrderAdapter myAdapter;
     private ArrayList<Order> data;
     private SwipeRefreshLayout swipeRefreshLayout;
+    private String terms;
 
     Handler myhandler = new Handler() {
         @Override
@@ -53,6 +55,7 @@ public class OrderActivity extends AppCompatActivity implements SwipeRefreshLayo
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_order);
+        terms = CourseUtils.getCourseToC(getIntent().getStringExtra("course"));
         empty = (EmptyView)findViewById(R.id.empty_view);
         loading = (LoadingView)findViewById(R.id.loading_view);
         empty.setOnClickListener(new View.OnClickListener() {
@@ -104,7 +107,7 @@ public class OrderActivity extends AppCompatActivity implements SwipeRefreshLayo
         new Thread(new Runnable() {
             @Override
             public void run() {
-                JSONObject jsonObject = HttpUtils.getJsonObject(URL);
+                JSONObject jsonObject = HttpUtils.getJsonObject(URL+"?terms="+terms);
                 if (jsonObject == null)
                     return;
                 data = JSONObject.parseObject(jsonObject.getString("order"), OrderArray.class);

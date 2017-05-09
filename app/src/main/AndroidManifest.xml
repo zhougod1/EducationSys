@@ -20,6 +20,9 @@
         <activity
             android:name=".activity.MainActivity"
             android:label="@string/app_name"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
+        <activity
+            android:name=".activity.LoginActivity"
             android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -28,18 +31,16 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".activity.LoginActivity"
+            android:name=".activity.RecyclerviewActivity"
             android:theme="@style/AppTheme.NoActionBar" />
-        <activity android:name=".activity.RecyclerviewActivity"
-            android:theme="@style/AppTheme.NoActionBar"/>
         <activity
             android:name=".activity.ReleaseActivity"
-            android:theme="@style/AppTheme.NoActionBar" >
-        </activity>
+            android:theme="@style/AppTheme.NoActionBar"></activity>
         <activity
             android:name=".activity.QuestionInfoActivity"
             android:theme="@style/AppTheme.NoActionBar" />
-        <activity android:name=".activity.MyQuestionActivity"
+        <activity
+            android:name=".activity.MyQuestionActivity"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".activity.OrderInfoActivity"
@@ -50,16 +51,18 @@
         <activity
             android:name=".activity.PersonalAlterActivity"
             android:theme="@style/AppTheme.NoActionBar" />
-        <activity android:name=".activity.PersonalActivity"
+        <activity
+            android:name=".activity.PersonalActivity"
             android:theme="@style/AppTheme.NoActionBar" />
-        <activity android:name=".activity.NewsOrderActivity"
-            android:theme="@style/AppTheme.NoActionBar"/>
-        <activity android:name=".activity.NewsQuestionActivity"
-            android:theme="@style/AppTheme.NoActionBar"/>
-        <activity android:name=".activity.ReleaseQuestionActivity"
-            android:theme="@style/AppTheme.NoActionBar">
-        </activity>
-
+        <activity
+            android:name=".activity.NewsOrderActivity"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".activity.NewsQuestionActivity"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".activity.ReleaseQuestionActivity"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
         <activity
             android:name=".activity.PhotoActivity"
             android:theme="@style/AppTheme.NoActionBar" />
@@ -69,14 +72,16 @@
         <activity
             android:name=".activity.TestPicActivity"
             android:theme="@style/AppTheme.NoActionBar" />
-        <activity android:name=".activity.MyOrderActivity"
-            android:theme="@style/AppTheme.NoActionBar"/>
-        <activity android:name=".activity.BillInfoActivity"
-            android:theme="@style/AppTheme.NoActionBar">
-
-        </activity>
-        <activity android:name=".activity.OrderActivity"
+        <activity
+            android:name=".activity.MyOrderActivity"
             android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".activity.BillInfoActivity"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
+        <activity
+            android:name=".activity.OrderActivity"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity android:name=".activity.ResignActivity"></activity>
     </application>
 
 </manifest>

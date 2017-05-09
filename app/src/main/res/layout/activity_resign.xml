@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_resign"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/common_google_signin_btn_text_dark_disabled">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingBottom="@dimen/activity_vertical_margin"
+        android:paddingLeft="@dimen/activity_horizontal_margin"
+        android:paddingRight="@dimen/activity_horizontal_margin"
+        android:paddingTop="@dimen/activity_vertical_margin"
+        tools:context="edu.zcs.com.educationsys.activity.ResignActivity"
+        android:background="@drawable/list_bg"
+        android:layout_margin="8dp">
+
+        <TextView
+            android:text="快速注册"
+            android:layout_width="wrap_content"
+            android:layout_height="60dp"
+            android:id="@+id/resgin_title"
+            android:layout_centerHorizontal="true"
+            android:textColor="@color/btn_alert"
+            android:textSize="20sp"
+            android:gravity="center_vertical" />
+
+        <android.support.design.widget.TextInputLayout
+            android:id="@+id/resgin_name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/resgin_title"
+            android:layout_marginTop="4dp">
+
+            <EditText
+                android:id="@+id/editText2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:hint="设置您的账号" />
+        </android.support.design.widget.TextInputLayout>
+
+        <android.support.design.widget.TextInputLayout
+            android:id="@+id/resgin_password"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/resgin_name"
+            android:layout_marginTop="4dp">
+
+            <EditText
+                android:id="@+id/editText3"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:hint="设置您的密码"
+                android:inputType="textPassword" />
+        </android.support.design.widget.TextInputLayout>
+        <android.support.design.widget.TextInputLayout
+            android:id="@+id/resgin_again"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/resgin_password"
+            android:layout_marginTop="4dp">
+
+            <EditText
+                android:id="@+id/editText4"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:hint="再次输入你的密码"
+                android:inputType="textPassword" />
+        </android.support.design.widget.TextInputLayout>
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/resgin_again">
+
+            <Button
+                android:text="注册"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/button5"
+                android:background="@color/my_background"
+                android:textColor="@color/bg_white"
+                android:textSize="16sp"
+                android:layout_marginTop="40dp" />
+
+            <Button
+                android:text="取消"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/button4"
+                android:layout_marginTop="10dp"
+                android:background="@color/error_color"
+                android:textColor="@color/bg_white"
+                android:textSize="16sp"
+                android:layout_marginBottom="40dp" />
+        </LinearLayout>
+    </RelativeLayout>
+</LinearLayout>

@@ -1,6 +1,5 @@
 package edu.zcs.com.educationsys.activity;
 
-import android.content.Context;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.Handler;
@@ -50,19 +49,18 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         init();
 
     }
-
     public void init() {
-        editor=sp.edit();
-        sp = this.getSharedPreferences("account", Context.MODE_WORLD_READABLE);
+//        editor=sp.edit();
+//        sp = this.getSharedPreferences("account", Context.MODE_WORLD_READABLE);
         sigin =(Button)findViewById(R.id.sigin);
         accountNum =(EditText)findViewById(R.id.accountNum);
         password=(EditText)findViewById(R.id.password);
         keepNum =(CheckBox)findViewById(R.id.keep_num);
-        keepNum.setChecked(sp.getBoolean("ISCHECKED",false));
+//        keepNum.setChecked(sp.getBoolean("ISCHECKED",false));
         sigin.setOnClickListener(this);
         if(keepNum.isChecked()){
-            accountNum.setText(sp.getString("ACCOUNT",""));
-            password.setText(sp.getString("PASSWORD",""));
+//            accountNum.setText(sp.getString("ACCOUNT",""));
+//            password.setText(sp.getString("PASSWORD",""));
         }
     }
 

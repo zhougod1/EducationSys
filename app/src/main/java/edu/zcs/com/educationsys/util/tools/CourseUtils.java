@@ -2,6 +2,8 @@ package edu.zcs.com.educationsys.util.tools;
 
 import edu.zcs.com.educationsys.R;
 
+import static edu.zcs.com.educationsys.R.drawable.chinese;
+
 /**
  * Created by Administrator on 2017/3/19.
  */
@@ -15,7 +17,7 @@ public class CourseUtils {
                 course= R.drawable.math;
                 break;
             case "语文":
-                course=R.drawable.chinese;
+                course= chinese;
                 break;
             case "英语":
                 course=R.drawable.english;
@@ -38,6 +40,40 @@ public class CourseUtils {
             case "化学":
                 course=R.drawable.chemistry;
             break;
+        }
+        return  course;
+    }
+
+    public static String getCourseToC(String kemu){
+        String course=null;
+        switch (kemu){
+            case "chinese":
+                course="语文";
+                break;
+            case "english":
+                course="英语";
+                break;
+            case "math":
+                course="数学";
+                break;
+            case "physics":
+                course="物理";
+                break;
+            case "politics":
+                course="政治";
+                break;
+            case "biology":
+                course="生物";
+                break;
+            case "geography":
+                course="地理";
+                break;
+            case "history":
+                course="历史";
+                break;
+            case "chemistry":
+                course="化学";
+                break;
         }
         return  course;
     }

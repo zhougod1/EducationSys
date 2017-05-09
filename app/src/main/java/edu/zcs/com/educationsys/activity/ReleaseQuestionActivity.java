@@ -1,5 +1,6 @@
 package edu.zcs.com.educationsys.activity;
 
+import android.app.Dialog;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
@@ -28,6 +29,7 @@ import android.widget.Spinner;
 import android.widget.Toast;
 
 import com.alibaba.fastjson.JSONObject;
+import com.dou361.dialogui.DialogUIUtils;
 
 import java.io.File;
 import java.io.IOException;
@@ -50,7 +52,8 @@ public class ReleaseQuestionActivity extends AppCompatActivity{
     private Spinner release_question_course;
     private GridAdapter rqApapter;
     private Button submit;
-    private String result;
+    private Dialog dialog;
+    private boolean result=true;
 
     Handler handler = new Handler() {
         @Override
@@ -61,8 +64,17 @@ public class ReleaseQuestionActivity extends AppCompatActivity{
                     rqApapter.notifyDataSetChanged();
                     break;
                 case 2:
-                    Toast.makeText(ReleaseQuestionActivity.this,result,Toast.LENGTH_SHORT).show();
+                    dialog.dismiss();
+                    Toast.makeText(ReleaseQuestionActivity.this,"发布成功",Toast.LENGTH_SHORT).show();
+                    BitmapUtils.drr.clear();
+                    BitmapUtils.bmp.clear();
+                    BitmapUtils.max = 0;
+                    FileUtils.deleteDir();
                     finish();
+                    break;
+                case 3:
+                    dialog.dismiss();
+                    Toast.makeText(ReleaseQuestionActivity.this,"发布失败",Toast.LENGTH_SHORT).show();
                     break;
             }
         }
@@ -81,21 +93,26 @@ public class ReleaseQuestionActivity extends AppCompatActivity{
         submit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                dialog = DialogUIUtils.showLoadingVertical(ReleaseQuestionActivity.this, "提交中...", false, false, true).show();
                 new Thread(new Runnable() {
 
                     @Override
                     public void run() {
-                String imgname="e4d4cad75ac7e5ea015ac7eddef70001"+System.currentTimeMillis();
-                String images="";
-                result= HttpUtils.uploadFile(BitmapUtils.drr,URL,imgname);
-                        if(Boolean.parseBoolean(result)) {
-                            for (int i = 0; i < BitmapUtils.drr.size(); i++) {
-                                images += "MYQUESTIONIMG_" + imgname + i+".jpg";
-                                if (i != BitmapUtils.drr.size() - 1) {
-                                    images += ";";
+                        String imgname = "e4d4cad75ac7e5ea015ac7eddef70001" + System.currentTimeMillis();
+                        String images = "";
+                        Message message = new Message();
+                        if (BitmapUtils.drr.size() > 0) {
+                            result = HttpUtils.uploadFile(BitmapUtils.drr, URL, imgname);
+                            if (result) {
+                                for (int i = 0; i < BitmapUtils.drr.size(); i++) {
+                                    images += "MYQUESTIONIMG_" + imgname + i + ".jpg";
+                                    if (i != BitmapUtils.drr.size() - 1) {
+                                        images += ";";
+                                    }
                                 }
                             }
+                        }
+                        if (result) {
                             Map<String, String> my = new HashMap<>();
                             my.put("aid", "e4d4cad75ac7e5ea015ac7eddef70001");
                             my.put("content", release_question_content.getText().toString());
@@ -103,19 +120,23 @@ public class ReleaseQuestionActivity extends AppCompatActivity{
                             my.put("time", String.valueOf(System.currentTimeMillis()));
                             my.put("course", release_question_course.getSelectedItem().toString());
                             my.put("img", images);
-//                UpdateLoadUtils uploadUtil = UpdateLoadUtils.getInstance();
-//                uploadUtil.uploadFile(BitmapUtils.drr.get(0),"img",URL,my);
-
                             JSONObject jsonObject = HttpUtils.getJsonObject(URL1, my);
-                            if(jsonObject==null)
+                            if (jsonObject == null) {
+                                message.what = 3;
+                                handler.sendMessage(message);
                                 return;
-                            result="发布成功";
-                            Message message = new Message();
-                            message.what = 2;
-                            handler.sendMessage(message);
-                        }else{
-                            result="发布失败";
+                            }
+                            result=JSONObject.parseObject(jsonObject.getString("result"),java.lang.Boolean.class);
+                            if(result){
+                                message.what = 2;
+                            }else{
+                                message.what = 3;
+                            }
+                        } else {
+                            result = true;
+                            message.what = 3;
                         }
+                        handler.sendMessage(message);
                     }
                 }).start();
             }

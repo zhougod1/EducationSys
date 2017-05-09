@@ -216,31 +216,31 @@ public class HomeAdapter extends BaseAdapter implements View.OnClickListener {
                 i.putExtra("course","chinese");
                 break;
             case R.id.english_bt:
-                i.putExtra("course","chinese");
+                i.putExtra("course","english");
                 break;
             case R.id.math_bt:
-                i.putExtra("course","chinese");
+                i.putExtra("course","math");
                 break;
             case R.id.physics_bt:
-                i.putExtra("course","chinese");
+                i.putExtra("course","physics");
                 break;
             case R.id.politics_bt:
-                i.putExtra("course","chinese");
+                i.putExtra("course","politics");
                 break;
             case R.id.biology_bt:
-                i.putExtra("course","chinese");
+                i.putExtra("course","biology");
                 break;
             case R.id.geography_bt:
-                i.putExtra("course","chinese");
+                i.putExtra("course","geography");
                 break;
             case R.id.history_bt:
-                i.putExtra("course","chinese");
+                i.putExtra("course","history");
                 break;
             case R.id.chemistry_bt:
-                i.putExtra("course","chinese");
+                i.putExtra("course","chemistry");
                 break;
             case R.id.all_bt:
-                i.putExtra("course","chinese");
+                i.putExtra("course","");
                 break;
         }
         context.startActivity(i);
