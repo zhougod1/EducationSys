@@ -1,11 +1,12 @@
 <resources>
-        <style name="AppTheme.NoActionBar">
-            <item name="windowActionBar">false</item>
-            <item name="windowNoTitle">true</item>
-            <item name="android:windowDrawsSystemBarBackgrounds">true</item>
-            <item name="android:statusBarColor">@android:color/transparent</item>
 
-        </style>
+    <style name="AppTheme.NoActionBar">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+        <item name="android:windowDrawsSystemBarBackgrounds">true</item>
+        <item name="android:statusBarColor">@android:color/transparent</item>
+
+    </style>
     <!-- ImageryHeader Theme -->
     <style name="Theme.ImageryHeader" parent="android:Theme.Holo.Light.DarkActionBar">
         <item name="android:actionBarStyle">@style/Theme.ImageryHeader.ActionBar</item>

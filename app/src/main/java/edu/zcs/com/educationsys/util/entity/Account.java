@@ -2,6 +2,7 @@ package edu.zcs.com.educationsys.util.entity;
 
 public class Account {
 	private String aid;
+	private String num;
 	private String account;
 	private String apassword;
 	private String aname;
@@ -52,14 +53,22 @@ public class Account {
 	public void setType(String type) {
 		this.type = type;
 	}
-	public String getAhead() {return ahead;}
-	public void setAhead(String ahead) {this.ahead = ahead;}
-
+	public String getAhead() {
+		return ahead;
+	}
+	public void setAhead(String ahead) {
+		this.ahead = ahead;
+	}
 	public String getSex() {
 		return sex;
 	}
-
 	public void setSex(String sex) {
 		this.sex = sex;
+	}
+	public String getNum() {
+		return num;
+	}
+	public void setNum(String num) {
+		this.num = num;
 	}
 }

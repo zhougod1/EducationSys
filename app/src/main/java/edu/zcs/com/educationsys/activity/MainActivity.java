@@ -2,9 +2,7 @@ package edu.zcs.com.educationsys.activity;
 
 import android.app.FragmentManager;
 import android.app.FragmentTransaction;
-import android.content.Context;
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.os.Message;
@@ -38,6 +36,7 @@ import edu.zcs.com.educationsys.util.tools.HttpUtils;
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener, View.OnClickListener {
     protected final static String URL=HttpUtils.HOST2+"/Edu/Bill/queryByAid";
+    private ACache cache;
     private Toolbar toolbar;
     private DrawerLayout drawer;
     private NavigationView navigationView;
@@ -48,8 +47,8 @@ public class MainActivity extends AppCompatActivity
     private ImageView img1, img2, img3;
     private TextView text_1, text_2, text_3;
     private LinearLayout tab1, tab2, tab3;
-    private SharedPreferences sp;
     private List<Map<String,Object>> date;
+    private boolean islogin=false;
 
 
 
@@ -57,7 +56,7 @@ public class MainActivity extends AppCompatActivity
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        sp = this.getSharedPreferences("account", Context.MODE_WORLD_READABLE);
+        cache=ACache.get(this);
         toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         init();
@@ -81,6 +80,7 @@ public class MainActivity extends AppCompatActivity
     }
 
     private void init() {
+        islogin=Boolean.parseBoolean(cache.getAsString("ISLOGIN"));
         date = new ArrayList<Map<String, Object>>();
         drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         navigationView = (NavigationView) findViewById(R.id.nav_view);
@@ -207,41 +207,38 @@ public class MainActivity extends AppCompatActivity
     @Override
     public boolean onNavigationItemSelected(MenuItem item) {
         int id = item.getItemId();
-
-        if (id == R.id.personal) {
-            Intent i=new Intent(MainActivity.this,PersonalActivity.class);
-            startActivity(i);
-
-        } else if (id == R.id.news) {
-            Intent i=new Intent(MainActivity.this,NewsActivity.class);
-            startActivity(i);
-        } else if (id == R.id.release_question) {
-//            if(sp.getBoolean("ISLOGIN",false)) {
+        if(islogin){
+            Intent intent=new Intent(this,LoginActivity.class);
+            startActivity(intent);
+        }else {
+            if (id == R.id.personal) {
+                Intent i = new Intent(MainActivity.this, PersonalActivity.class);
+                startActivity(i);
+            } else if (id == R.id.news) {
+                Intent i = new Intent(MainActivity.this, NewsActivity.class);
+                startActivity(i);
+            } else if (id == R.id.release_question) {
                 Intent i = new Intent(MainActivity.this, ReleaseQuestionActivity.class);
                 startActivity(i);
-//            }else{
-//                Intent i = new Intent(MainActivity.this, LoginActivity.class);
-//                startActivity(i);
-//            }
 
-        } else if (id == R.id.release_order) {
-//            if(sp.getBoolean("ISLOGIN",false)) {
-//                Intent i = new Intent(MainActivity.this, MyOrderActivity.class);
-//                startActivity(i);
-//            }else{
+            } else if (id == R.id.release_order) {
                 Intent i = new Intent(MainActivity.this, ReleaseActivity.class);
                 startActivity(i);
-//            }
 
-        } else if (id == R.id.myorder) {
+            } else if (id == R.id.myorder) {
 
-        } else if (id == R.id.myquestion) {
+            } else if (id == R.id.myquestion) {
 
+            }
         }
-
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
         return true;
+    }
+
+    @Override
+    protected void onRestart() {
+        islogin=Boolean.parseBoolean(cache.getAsString("ISLOGIN"));
     }
 
     @Override
@@ -252,20 +249,16 @@ public class MainActivity extends AppCompatActivity
 
                 break;
             case R.id.tab2:
-//                if(cid==0){
-//                    Intent intent=new Intent(this,Login.class);
-//                    startActivity(intent);
-//                }else {
                 setTabSelection(1);
 
                 break;
             case R.id.tab3:
-//                if(cid==0){
-//                    Intent intent=new Intent(this,Login.class);
-//                    startActivity(intent);
-//                }else {
-                setTabSelection(2);
-
+                if(islogin){
+                    Intent intent=new Intent(this,LoginActivity.class);
+                    startActivity(intent);
+                }else {
+                    setTabSelection(2);
+                }
                 break;
         }
 
@@ -275,10 +268,10 @@ public class MainActivity extends AppCompatActivity
         new Thread(new Runnable() {
             @Override
             public void run() {
-                JSONObject jsonObject = HttpUtils.getJsonObject(URL+"?aid="+"e4d4c8ff5a74670e015a7467b2360000");
+                JSONObject jsonObject = HttpUtils.getJsonObject(URL+"?aid="+cache.getAsString("AID"));
                 if (jsonObject == null)
                     return;
-                ACache cache=ACache.get(MainActivity.this);
+                cache=ACache.get(MainActivity.this);
                 cache.put("bill_list",jsonObject.getString("result"));
                 date =(List<Map<String,Object>>)JSONObject.parseObject(jsonObject.getString("result"),java.util.List.class);
                 Message message = new Message();

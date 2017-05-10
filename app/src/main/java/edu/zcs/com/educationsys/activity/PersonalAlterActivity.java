@@ -1,7 +1,5 @@
 package edu.zcs.com.educationsys.activity;
 
-import android.content.Context;
-import android.content.SharedPreferences;
 import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.os.Handler;
@@ -18,6 +16,7 @@ import java.util.Map;
 
 import edu.zcs.com.educationsys.R;
 import edu.zcs.com.educationsys.util.entity.Account;
+import edu.zcs.com.educationsys.util.tools.ACache;
 import edu.zcs.com.educationsys.util.tools.HttpUtils;
 
 public class PersonalAlterActivity extends AppCompatActivity  implements View.OnClickListener{
@@ -30,10 +29,10 @@ public class PersonalAlterActivity extends AppCompatActivity  implements View.On
     private TextView personal_alter_addres;
     private TextView personal_alter_sex;
     private Account account;
-    private SharedPreferences sp;
     private TextView personal_update;
     private TextView back;
     private Bitmap image;
+    private ACache cache;
 
 
     Handler handler = new Handler() {
@@ -66,7 +65,7 @@ public class PersonalAlterActivity extends AppCompatActivity  implements View.On
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_personal_alter);
-        sp =this.getSharedPreferences("account", Context.MODE_WORLD_READABLE);
+        cache=ACache.get(this);
         personal_alter_account = (TextView) findViewById(R.id.personal_alter_account);
         personal_alter_name = (TextView) findViewById(R.id.personal_alter_name);
         personal_alter_addres = (TextView) findViewById(R.id.personal_alter_addres);
@@ -84,7 +83,7 @@ public class PersonalAlterActivity extends AppCompatActivity  implements View.On
         new Thread(new Runnable() {
             @Override
             public void run() {
-                JSONObject jsonObject = HttpUtils.getJsonObject(URL + "?aid=" + "e4d4c8ff5a74670e015a7467b2360000");
+                JSONObject jsonObject = HttpUtils.getJsonObject(URL + "?aid=" + cache.getAsString("AID"));
                 if (jsonObject == null)
                     return;
                 account = JSONObject.parseObject(jsonObject.getString("result"), Account.class);
@@ -104,7 +103,7 @@ public class PersonalAlterActivity extends AppCompatActivity  implements View.On
                     public void run() {
                         Map<String,String> info=new HashMap<String, String>();
 //                       info.put("account",personal_alter_account.getText().toString());
-                        info.put("aid",sp.getString("AID",""));
+                        info.put("aid",cache.getAsString("AID"));
                         info.put("name",personal_alter_name.getText().toString());
                         info.put("sex",personal_alter_sex.getText().toString());
                         info.put("phone",personal_alter_phone.getText().toString());

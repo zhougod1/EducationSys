@@ -45,9 +45,9 @@ import java.util.UUID;
 
 public class HttpUtils {
 
-	public static final String HOST = "http://192.168.56.1:8080";
+	public static final String HOST2 = "http://192.168.56.1:8080";
 	public static final String HOST4 = "http://192.168.191.1:8080";
-	public static final String HOST2 = "http://192.168.1.111:8080";
+	public static final String HOST = "http://192.168.1.111:8080";
 	public static final String HOST3 = "http://115.159.121.34:8080";
 	public static final String ImageHOST=HOST2+"/Edu/img/";
 	private static final String BOUNDARY =  UUID.randomUUID().toString(); // 边界标识 随机生成

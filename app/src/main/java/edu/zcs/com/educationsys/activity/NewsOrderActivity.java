@@ -19,6 +19,7 @@ import java.util.Map;
 
 import edu.zcs.com.educationsys.R;
 import edu.zcs.com.educationsys.adapter.NewsInfoAdapter;
+import edu.zcs.com.educationsys.util.tools.ACache;
 import edu.zcs.com.educationsys.util.tools.HttpUtils;
 
 public class NewsOrderActivity extends AppCompatActivity {
@@ -27,6 +28,7 @@ public class NewsOrderActivity extends AppCompatActivity {
     private List<Map<String,Object>> date;
     private NewsInfoAdapter myAdapter;
     private RecyclerView recyclerView;
+    private ACache cache;
 
     Handler myhandler=new Handler(){
         @Override
@@ -44,6 +46,7 @@ public class NewsOrderActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_news_order);
+        cache=ACache.get(this);
         date =new ArrayList<Map<String, Object>>();
         myAdapter =new NewsInfoAdapter(this, date);
         myAdapter.setOnItemClickListener(new NewsInfoAdapter.OnRecyclerViewItemClickListener() {
@@ -71,7 +74,7 @@ public class NewsOrderActivity extends AppCompatActivity {
         new Thread(new Runnable() {
             @Override
             public void run() {
-                JSONObject jsonObject = HttpUtils.getJsonObject(URL+"?aid="+"e4d4c8ff5a74670e015a7467b2360000");
+                JSONObject jsonObject = HttpUtils.getJsonObject(URL+"?aid="+cache.getAsString("AID"));
                 if (jsonObject == null)
                     return;
                 date=(List<Map<String,Object>>) JSONObject.parseObject(jsonObject.getString("news"),java.util.List.class);

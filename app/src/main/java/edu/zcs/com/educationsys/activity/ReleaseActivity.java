@@ -25,6 +25,7 @@ import java.util.List;
 import java.util.Map;
 
 import edu.zcs.com.educationsys.R;
+import edu.zcs.com.educationsys.util.tools.ACache;
 import edu.zcs.com.educationsys.util.tools.HttpUtils;
 
 public class ReleaseActivity extends AppCompatActivity implements View.OnClickListener {
@@ -50,6 +51,7 @@ public class ReleaseActivity extends AppCompatActivity implements View.OnClickLi
     private String pay_number;
     private String pay_time;
     private boolean result=false;
+    private ACache cache;
 
     Handler myhandle=new Handler(){
         @Override
@@ -73,6 +75,7 @@ public class ReleaseActivity extends AppCompatActivity implements View.OnClickLi
 
     public void initView(){
         course=new ArrayList<String>();
+        cache=ACache.get(this);
         release_order_address=(EditText)findViewById(R.id.release_order_address);
         release_order_phone= (EditText) findViewById(R.id.release_order_phone);
         release_order_title= (EditText) findViewById(R.id.release_order_title);
@@ -102,7 +105,7 @@ public class ReleaseActivity extends AppCompatActivity implements View.OnClickLi
             @Override
             public void run() {
                 Map<String, String> release = new HashMap<>();
-                release.put("aid", release_order_title.getText().toString());
+                release.put("aid", cache.getAsString("AID"));
                 release.put("title", release_order_title.getText().toString());
                 release.put("address", release_order_address.getText().toString());
                 release.put("phone", release_order_phone.getText().toString());

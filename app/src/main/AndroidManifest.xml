@@ -20,22 +20,17 @@
         <activity
             android:name=".activity.MainActivity"
             android:label="@string/app_name"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
+            android:theme="@style/AppTheme.NoActionBar">
+        </activity>
         <activity
             android:name=".activity.LoginActivity"
-            android:theme="@style/AppTheme.NoActionBar">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
+            android:theme="@style/AppTheme.NoActionBar"></activity>
         <activity
             android:name=".activity.RecyclerviewActivity"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".activity.ReleaseActivity"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".activity.QuestionInfoActivity"
             android:theme="@style/AppTheme.NoActionBar" />
@@ -62,7 +57,7 @@
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".activity.ReleaseQuestionActivity"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".activity.PhotoActivity"
             android:theme="@style/AppTheme.NoActionBar" />
@@ -77,11 +72,20 @@
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".activity.BillInfoActivity"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".activity.OrderActivity"
             android:theme="@style/AppTheme.NoActionBar" />
-        <activity android:name=".activity.ResignActivity"></activity>
+        <activity
+            android:name=".activity.ResignActivity"
+            android:theme="@style/AppTheme.NoActionBar"
+            >
+            <intent-filter>
+            <action android:name="android.intent.action.MAIN" />
+
+            <category android:name="android.intent.category.LAUNCHER" />
+        </intent-filter>
+        </activity>
     </application>
 
 </manifest>

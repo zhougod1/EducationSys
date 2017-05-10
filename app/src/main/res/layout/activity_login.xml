@@ -76,8 +76,7 @@
         android:id="@+id/accountNum"
         android:layout_weight="1"
         android:hint="您的账号"
-        android:textColor="@color/btn_alert"
-        android:textColorLink="?android:attr/colorPrimaryDark" />
+        android:textColor="@color/btn_alert"/>
     </android.support.design.widget.TextInputLayout>
 
     <android.support.design.widget.TextInputLayout

@@ -91,7 +91,7 @@ public class BillFragment extends Fragment implements SwipeRefreshLayout.OnRefre
         new Thread(new Runnable() {
             @Override
             public void run() {
-                JSONObject jsonObject = HttpUtils.getJsonObject(URL+"?aid="+"e4d4c8ff5a74670e015a7467b2360000");
+                JSONObject jsonObject = HttpUtils.getJsonObject(URL+"?aid="+cache.getAsString("AID"));
                 if (jsonObject == null)
                     return;
                 cache.put("bill_list",jsonObject.getString("result"));

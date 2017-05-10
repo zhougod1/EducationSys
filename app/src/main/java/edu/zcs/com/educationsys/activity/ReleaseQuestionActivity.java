@@ -38,6 +38,7 @@ import java.util.Map;
 
 import edu.zcs.com.educationsys.R;
 import edu.zcs.com.educationsys.adapter.GridAdapter;
+import edu.zcs.com.educationsys.util.tools.ACache;
 import edu.zcs.com.educationsys.util.tools.BitmapUtils;
 import edu.zcs.com.educationsys.util.tools.FileUtils;
 import edu.zcs.com.educationsys.util.tools.HttpUtils;
@@ -54,6 +55,7 @@ public class ReleaseQuestionActivity extends AppCompatActivity{
     private Button submit;
     private Dialog dialog;
     private boolean result=true;
+    private ACache cache;
 
     Handler handler = new Handler() {
         @Override
@@ -84,6 +86,7 @@ public class ReleaseQuestionActivity extends AppCompatActivity{
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_release_question);
+        cache=ACache.get(this);
         release_question_title = (EditText)findViewById(R.id.release_question_title);
         release_question_content = (EditText)findViewById(R.id.release_question_content);
         release_question_course = (Spinner)findViewById(R.id.release_question_course);
@@ -98,7 +101,7 @@ public class ReleaseQuestionActivity extends AppCompatActivity{
 
                     @Override
                     public void run() {
-                        String imgname = "e4d4cad75ac7e5ea015ac7eddef70001" + System.currentTimeMillis();
+                        String imgname = cache.getAsString("AID") + System.currentTimeMillis();
                         String images = "";
                         Message message = new Message();
                         if (BitmapUtils.drr.size() > 0) {
@@ -114,7 +117,7 @@ public class ReleaseQuestionActivity extends AppCompatActivity{
                         }
                         if (result) {
                             Map<String, String> my = new HashMap<>();
-                            my.put("aid", "e4d4cad75ac7e5ea015ac7eddef70001");
+                            my.put("aid", cache.getAsString("AID"));
                             my.put("content", release_question_content.getText().toString());
                             my.put("title", release_question_title.getText().toString());
                             my.put("time", String.valueOf(System.currentTimeMillis()));

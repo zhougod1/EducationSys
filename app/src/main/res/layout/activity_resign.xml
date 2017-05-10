@@ -16,27 +16,28 @@
         android:paddingTop="@dimen/activity_vertical_margin"
         tools:context="edu.zcs.com.educationsys.activity.ResignActivity"
         android:background="@drawable/list_bg"
-        android:layout_margin="8dp">
+        android:layout_margin="8dp"
+        android:id="@+id/resign_layout">
 
         <TextView
             android:text="快速注册"
             android:layout_width="wrap_content"
             android:layout_height="60dp"
-            android:id="@+id/resgin_title"
+            android:id="@+id/resign_title"
             android:layout_centerHorizontal="true"
             android:textColor="@color/btn_alert"
             android:textSize="20sp"
             android:gravity="center_vertical" />
 
         <android.support.design.widget.TextInputLayout
-            android:id="@+id/resgin_name"
+            android:id="@+id/resign_num"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/resgin_title"
+            android:layout_below="@+id/resign_title"
             android:layout_marginTop="4dp">
 
             <EditText
-                android:id="@+id/editText2"
+                android:id="@+id/resign_edit_num"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:ems="10"
@@ -44,14 +45,29 @@
         </android.support.design.widget.TextInputLayout>
 
         <android.support.design.widget.TextInputLayout
-            android:id="@+id/resgin_password"
+            android:id="@+id/resign_account"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/resgin_name"
+            android:layout_below="@+id/resign_num"
             android:layout_marginTop="4dp">
 
             <EditText
-                android:id="@+id/editText3"
+                android:id="@+id/resign_edit_account"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:hint="设置您的昵称" />
+        </android.support.design.widget.TextInputLayout>
+
+        <android.support.design.widget.TextInputLayout
+            android:id="@+id/resign_password"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/resign_account"
+            android:layout_marginTop="4dp">
+
+            <EditText
+                android:id="@+id/resign_edit_password"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:ems="10"
@@ -59,31 +75,41 @@
                 android:inputType="textPassword" />
         </android.support.design.widget.TextInputLayout>
         <android.support.design.widget.TextInputLayout
-            android:id="@+id/resgin_again"
+            android:id="@+id/resign_again"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/resgin_password"
+            android:layout_below="@+id/resign_password"
             android:layout_marginTop="4dp">
 
             <EditText
-                android:id="@+id/editText4"
+                android:id="@+id/resign_edit_again"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:ems="10"
                 android:hint="再次输入你的密码"
                 android:inputType="textPassword" />
         </android.support.design.widget.TextInputLayout>
+
+        <TextView
+            android:text="*两次输入密码的不一致"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/resign_again_hint"
+            android:layout_below="@+id/resign_again"
+            android:visibility="gone"
+            android:textColor="@color/error_color" />
+
         <LinearLayout
             android:orientation="vertical"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/resgin_again">
+            android:layout_below="@+id/resign_again">
 
             <Button
                 android:text="注册"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:id="@+id/button5"
+                android:id="@+id/resign_ensure"
                 android:background="@color/my_background"
                 android:textColor="@color/bg_white"
                 android:textSize="16sp"
@@ -93,12 +119,12 @@
                 android:text="取消"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:id="@+id/button4"
+                android:id="@+id/resign_cancel"
                 android:layout_marginTop="10dp"
                 android:background="@color/error_color"
                 android:textColor="@color/bg_white"
                 android:textSize="16sp"
-                android:layout_marginBottom="40dp" />
+                android:layout_marginBottom="32dp" />
         </LinearLayout>
     </RelativeLayout>
 </LinearLayout>

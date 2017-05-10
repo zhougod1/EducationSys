@@ -3,7 +3,6 @@ package edu.zcs.com.educationsys.activity;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.content.res.Resources;
 import android.content.res.TypedArray;
 import android.graphics.Bitmap;
@@ -29,6 +28,7 @@ import com.alibaba.fastjson.JSONObject;
 
 import edu.zcs.com.educationsys.R;
 import edu.zcs.com.educationsys.util.entity.Account;
+import edu.zcs.com.educationsys.util.tools.ACache;
 import edu.zcs.com.educationsys.util.tools.HttpUtils;
 import edu.zcs.com.educationsys.util.view.ObservableScrollView;
 
@@ -64,7 +64,7 @@ public class PersonalActivity extends AppCompatActivity
     private LinearLayout personal_typle;
     private LinearLayout personal_info_submit;
     private ImageView personal_info_header;
-    private SharedPreferences sp;
+    private ACache cache;
 
     Handler mHandler=new Handler(){
         @Override
@@ -95,6 +95,7 @@ public class PersonalActivity extends AppCompatActivity
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_personal);
+        cache=ACache.get(this);
         scrollView = (ObservableScrollView)findViewById(R.id.scroll_view);
         headerImageContainer =findViewById(R.id.header_image_container);
         headerImage = (ImageView) findViewById(R.id.header_image);
@@ -103,7 +104,6 @@ public class PersonalActivity extends AppCompatActivity
         headerBarContents = findViewById(R.id.header_bar_contents);
         headerBarBackground =findViewById(R.id.header_bar_background);
         headerBarShadow =findViewById(R.id.header_bar_shadow);
-        sp = this.getSharedPreferences("account", Context.MODE_WORLD_READABLE);
         personal_info_name=(TextView)findViewById(R.id.personal_info_name);
         personal_info_sex=(TextView)findViewById(R.id.personal_info_sex);
         personal_info_phone=(TextView)findViewById(R.id.personal_info_phone);
@@ -300,7 +300,7 @@ public class PersonalActivity extends AppCompatActivity
         new Thread(new Runnable() {
             @Override
             public void run() {
-                JSONObject jsonObject = HttpUtils.getJsonObject(URL+"?aid="+"e4d4c8ff5a74670e015a7467b2360000");
+                JSONObject jsonObject = HttpUtils.getJsonObject(URL+"?aid="+cache.getAsString("AID"));
                 if (jsonObject == null)
                     return;
                     account=JSONObject.parseObject(jsonObject.getString("result"),Account.class);

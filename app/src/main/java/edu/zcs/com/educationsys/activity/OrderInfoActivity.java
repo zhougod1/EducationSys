@@ -2,7 +2,6 @@ package edu.zcs.com.educationsys.activity;
 
 import android.content.Context;
 import android.content.DialogInterface;
-import android.content.SharedPreferences;
 import android.graphics.drawable.BitmapDrawable;
 import android.os.Bundle;
 import android.os.Handler;
@@ -29,6 +28,7 @@ import java.util.Map;
 import edu.zcs.com.educationsys.R;
 import edu.zcs.com.educationsys.util.entity.Account;
 import edu.zcs.com.educationsys.util.entity.Order;
+import edu.zcs.com.educationsys.util.tools.ACache;
 import edu.zcs.com.educationsys.util.tools.CourseUtils;
 import edu.zcs.com.educationsys.util.tools.DateUtils;
 import edu.zcs.com.educationsys.util.tools.HttpUtils;
@@ -44,6 +44,8 @@ public class OrderInfoActivity extends AppCompatActivity {
     private Order order;
     private TextView order_release;
     private Account account;
+    private ACache cache;
+
     Handler myHandler=new Handler(){
         @Override
         public void handleMessage(Message msg) {
@@ -74,13 +76,12 @@ public class OrderInfoActivity extends AppCompatActivity {
             }
         }
     };
-    private SharedPreferences sp;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_order_info);
-        sp = this.getSharedPreferences("account", Context.MODE_WORLD_READABLE);
+        cache=ACache.get(this);
         oid=getIntent().getStringExtra("oid");
 //        order = new ArrayList<Order>();
 //        account = new ArrayList<Account>();
@@ -179,7 +180,7 @@ public class OrderInfoActivity extends AppCompatActivity {
                                     bill.put("oid",order.getOid());
                                     bill.put("message",order_release_message.getText().toString());
                                     bill.put("aid",account.getAid());
-                                    bill.put("b_aid","e4d4c8ff5a74670e015a7467b2360000");//sp.getString("aid",""));
+                                    bill.put("b_aid",cache.getAsString("AID"));//sp.getString("aid",""));
                                     bill.put("time",new DateUtils().getDate());
                                     JSONObject jsonObject = HttpUtils.getJsonObject(URL2,bill);
                                     if (jsonObject == null)
