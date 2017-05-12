@@ -11,6 +11,7 @@ public class Account {
 	private String type;
 	private String ahead;
 	private String sex;
+	private String area;
 	public String getAid() {
 		return aid;
 	}
@@ -70,5 +71,13 @@ public class Account {
 	}
 	public void setNum(String num) {
 		this.num = num;
+	}
+
+	public String getArea() {
+		return area;
+	}
+
+	public void setArea(String area) {
+		this.area = area;
 	}
 }

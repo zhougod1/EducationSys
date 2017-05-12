@@ -101,7 +101,6 @@
                     android:paddingRight="10dp" />
 
                 <TextView
-                    android:text="TextView"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:id="@+id/personal_info_name"
@@ -129,7 +128,6 @@
                         android:paddingRight="10dp" />
 
                     <TextView
-                        android:text="TextView"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:id="@+id/personal_info_sex"
@@ -159,7 +157,6 @@
                     android:paddingRight="10dp" />
 
                 <TextView
-                    android:text="TextView"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:id="@+id/personal_info_phone"
@@ -188,7 +185,6 @@
                         android:paddingRight="10dp" />
 
                     <TextView
-                        android:text="TextView"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:id="@+id/personal_info_addres"
@@ -220,7 +216,7 @@
                     android:paddingRight="10dp" />
 
                     <TextView
-                    android:text="TextView"
+                    android:text="请等待后续更新"
                     android:layout_width="230dp"
                     android:layout_height="wrap_content"
                     android:id="@+id/personal_info_typle"

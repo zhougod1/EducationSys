@@ -48,7 +48,7 @@
             android:id="@+id/resign_account"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/resign_num"
+            android:layout_below="@+id/resign_account_hint"
             android:layout_marginTop="4dp">
 
             <EditText
@@ -89,7 +89,14 @@
                 android:hint="再次输入你的密码"
                 android:inputType="textPassword" />
         </android.support.design.widget.TextInputLayout>
-
+        <TextView
+            android:text="*此账号已存在请更换"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/resign_account_hint"
+            android:visibility="gone"
+            android:textColor="@color/error_color"
+            android:layout_below="@+id/resign_num" />
         <TextView
             android:text="*两次输入密码的不一致"
             android:layout_width="match_parent"

@@ -32,6 +32,15 @@
                 android:title="发布的问题" />
         </menu>
     </item>
+    <item android:title="操作">
+        <menu>
+            <item
+                android:id="@+id/log_off"
+                android:icon="@drawable/menu_logoff_icon"
+                android:title="注销" />
+
+        </menu>
+    </item>
 
     <!--<item-->
         <!--android:id="@+id/personal2"-->

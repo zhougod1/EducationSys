@@ -11,9 +11,11 @@ import android.widget.Toast;
 public class EditUtils {
 
     public static final String PHONE="(86)*0*13\\d{9}";
-    public static final String ACCOUNT="[a-zA-Z\\\\d]*";
+    public static final String ACCOUNT="[a-zA-Z\\d]*";
+    public static final String NAME="[^\\\\^\\s]*";
+    public static final String PASSWORD="[^\\\\^\\s^\\u4E00-\\u9FA5]*";
 
-    public void set(final EditText et, final String regular, final String msg) {
+    public static void set(final EditText et, final String regular, final String msg) {
             et.addTextChangedListener(new TextWatcher() {
                 String before = "";
                 @Override

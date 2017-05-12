@@ -82,13 +82,19 @@
                 android:id="@+id/textView31"
                 android:layout_weight="3" />
 
-            <TextView
-
+            <EditText
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
+                android:inputType="textPersonName"
+                android:background="@null"
+                android:ems="10"
+                android:focusable="true"
+                android:focusableInTouchMode="true"
                 android:id="@+id/personal_alter_account"
                 android:gravity="center_vertical"
-                android:layout_weight="1"/>
+                android:textSize="14sp"
+                android:layout_weight="1"
+                android:hint="你的账号" />
         </LinearLayout>
 
         <LinearLayout
@@ -244,18 +250,16 @@
                 android:id="@+id/textView46"
                 android:layout_weight="3" />
 
-            <EditText
+            <TextView
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:inputType="textPersonName"
                 android:background="@null"
                 android:ems="10"
-                android:focusable="true"
-                android:focusableInTouchMode="true"
                 android:hint="居住地址所在区"
                 android:textSize="14sp"
-                android:id="@+id/editText8"
-                android:layout_weight="1" />
+                android:id="@+id/personal_alter_area"
+                android:layout_weight="1"
+                android:gravity="center_vertical" />
 
         </LinearLayout>
     </LinearLayout>

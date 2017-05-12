@@ -5,6 +5,7 @@ import android.app.FragmentTransaction;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
+import android.os.Handler;
 import android.os.Message;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
@@ -12,6 +13,7 @@ import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -20,22 +22,25 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.alibaba.fastjson.JSONObject;
-
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Map;
+import com.nostra13.universalimageloader.core.DisplayImageOptions;
+import com.nostra13.universalimageloader.core.ImageLoader;
 
 import edu.zcs.com.educationsys.R;
 import edu.zcs.com.educationsys.fragment.BillFragment;
 import edu.zcs.com.educationsys.fragment.HomeFragment;
 import edu.zcs.com.educationsys.fragment.QuestionFragment;
+import edu.zcs.com.educationsys.util.entity.Account;
 import edu.zcs.com.educationsys.util.tools.ACache;
 import edu.zcs.com.educationsys.util.tools.HttpUtils;
+import edu.zcs.com.educationsys.util.tools.Options;
 
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener, View.OnClickListener {
-    protected final static String URL=HttpUtils.HOST2+"/Edu/Bill/queryByAid";
+    protected final static String URL=HttpUtils.HOST2+"/Edu/Account/getById";
+    protected ImageLoader imageLoader;
+    private DisplayImageOptions options;
+    private TextView account_head_name;
     private ACache cache;
     private Toolbar toolbar;
     private DrawerLayout drawer;
@@ -43,13 +48,24 @@ public class MainActivity extends AppCompatActivity
     private FragmentManager myfragmentManager;
     private BillFragment bill;
     private HomeFragment home;
+    private ImageView account_head_icon;
     private QuestionFragment question;
     private ImageView img1, img2, img3;
     private TextView text_1, text_2, text_3;
     private LinearLayout tab1, tab2, tab3;
-    private List<Map<String,Object>> date;
+    private Account date;
     private boolean islogin=false;
 
+    Handler mhandler=new Handler(){
+        @Override
+        public void handleMessage(Message msg) {
+            super.handleMessage(msg);
+            account_head_name.setText(date.getAccount().toString());
+            imageLoader.displayImage(HttpUtils.ImageHOST+date.getAhead().toString(),account_head_icon,options);
+
+        }
+    };
+    private View headerLayout;
 
 
     @Override
@@ -61,6 +77,10 @@ public class MainActivity extends AppCompatActivity
         setSupportActionBar(toolbar);
         init();
         setTabSelection(0);
+        if(Boolean.parseBoolean(cache.getAsString("ISLOGIN"))){
+            account_head_name.setText(JSONObject.parseObject(cache.getAsString("account_list"),Account.class).getAccount().toString());
+            account_head_icon.setImageBitmap(cache.getAsBitmap("HEADICON"));
+        }
 //        fab.setOnClickListener(new View.OnClickListener() {
 //            @Override
 //            public void onClick(View view) {
@@ -77,14 +97,21 @@ public class MainActivity extends AppCompatActivity
         navigationView.setNavigationItemSelectedListener(this);
         navigationView.setItemIconTintList(null);
 
+
+
     }
 
     private void init() {
+
+        imageLoader=ImageLoader.getInstance();
+        options= Options.getListOptions();
         islogin=Boolean.parseBoolean(cache.getAsString("ISLOGIN"));
-        date = new ArrayList<Map<String, Object>>();
         drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         navigationView = (NavigationView) findViewById(R.id.nav_view);
+        headerLayout = navigationView.inflateHeaderView(R.layout.nav_header_main);
         myfragmentManager = getFragmentManager();
+        account_head_icon= (ImageView) headerLayout.findViewById(R.id.account_head_icon);
+        account_head_name= (TextView) headerLayout.findViewById(R.id.account_head_name);
         img1 = (ImageView) findViewById(R.id.img1);
         img2 = (ImageView) findViewById(R.id.img2);
         img3 = (ImageView) findViewById(R.id.img3);
@@ -98,7 +125,9 @@ public class MainActivity extends AppCompatActivity
         tab1.setOnClickListener(this);
         tab2.setOnClickListener(this);
         tab3.setOnClickListener(this);
-
+        if(islogin) {
+            loadDate();
+        }
     }
 
     private void setTabSelection(int index) {
@@ -207,7 +236,7 @@ public class MainActivity extends AppCompatActivity
     @Override
     public boolean onNavigationItemSelected(MenuItem item) {
         int id = item.getItemId();
-        if(islogin){
+        if(!islogin){
             Intent intent=new Intent(this,LoginActivity.class);
             startActivity(intent);
         }else {
@@ -229,6 +258,12 @@ public class MainActivity extends AppCompatActivity
 
             } else if (id == R.id.myquestion) {
 
+            } else if (id == R.id.log_off){
+                setTabSelection(0);
+                account_head_name.setText("暂未登录");
+                account_head_icon.setImageResource(R.drawable.erro);
+                islogin=false;
+                cache.put("ISLOGIN","false");
             }
         }
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
@@ -238,7 +273,13 @@ public class MainActivity extends AppCompatActivity
 
     @Override
     protected void onRestart() {
-        islogin=Boolean.parseBoolean(cache.getAsString("ISLOGIN"));
+        super.onRestart();
+        boolean nowState=Boolean.parseBoolean(cache.getAsString("ISLOGIN"));
+        if(islogin!=nowState && nowState){
+            loadDate();
+        }
+        islogin=nowState;
+        Log.e("onRestart: ",String.valueOf(islogin) );
     }
 
     @Override
@@ -253,7 +294,7 @@ public class MainActivity extends AppCompatActivity
 
                 break;
             case R.id.tab3:
-                if(islogin){
+                if(!islogin){
                     Intent intent=new Intent(this,LoginActivity.class);
                     startActivity(intent);
                 }else {
@@ -272,9 +313,11 @@ public class MainActivity extends AppCompatActivity
                 if (jsonObject == null)
                     return;
                 cache=ACache.get(MainActivity.this);
-                cache.put("bill_list",jsonObject.getString("result"));
-                date =(List<Map<String,Object>>)JSONObject.parseObject(jsonObject.getString("result"),java.util.List.class);
+                cache.put("account_list",jsonObject.getString("result"));
+                date =JSONObject.parseObject(jsonObject.getString("result"),Account.class);
+                cache.put("HEADICON",imageLoader.loadImageSync(HttpUtils.ImageHOST+date.getAhead().toString()));
                 Message message = new Message();
+                mhandler.sendMessage(message);
             }
         }).start();
     }

@@ -36,7 +36,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                             cache.put("PASSWORD", password.getText().toString().trim());
                         }
                         Toast.makeText(LoginActivity.this,"登入成功",Toast.LENGTH_SHORT).show();
-
+                        finish();
                     }else {
                         Toast.makeText(LoginActivity.this,"登入失败",Toast.LENGTH_SHORT).show();
                     }
